@@ -1,10 +1,11 @@
 import React from 'react';
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 import LogoImage from '../../../assets/logo.png';
 
 const StyledHeader = styled.header`
   width: 425px;
-  height: 130px;
+  height: 120px;
   display: flex;
   align-items: center;
 
@@ -29,11 +30,17 @@ const StyledImage = styled.img`
   object-fit: contain;
 `;
 
+const StyledLink = styled(Link)`
+  text-decoration: none;
+`;
+
 const Logo = () => (
-  <StyledHeader>
-    <StyledImage src={LogoImage} alt="Logo" />
-    <StyledHeaderText>bookownia.pl</StyledHeaderText>
-  </StyledHeader>
+  <StyledLink to="/">
+    <StyledHeader>
+      <StyledImage src={LogoImage} alt="Logo" />
+      <StyledHeaderText>bookownia.pl</StyledHeaderText>
+    </StyledHeader>
+  </StyledLink>
 );
 
 export default Logo;

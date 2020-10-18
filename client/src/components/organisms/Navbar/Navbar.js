@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import { NavLink, Link, withRouter } from 'react-router-dom';
@@ -12,6 +12,12 @@ const StyledWrapper = styled.nav`
   display: flex;
   justify-content: space-between;
   align-items: center;
+  background-color: #fff;
+  z-index: 9999;
+  position: relative;
+  @media ${({ theme }) => theme.device.laptop} {
+    height: 80px;
+  }
 `;
 
 const StyledListWrapper = styled.div`
@@ -33,6 +39,10 @@ const StyledCartIcon = styled.div`
   &:hover {
     cursor: pointer;
     opacity: 0.9;
+  }
+
+  @media ${({ theme }) => theme.device.laptop} {
+    margin-left: 15px;
   }
 `;
 
@@ -91,36 +101,75 @@ const StyledNavLink = styled(NavLink)`
   }
 `;
 
-const Navbar = ({ location: { pathname } }) => (
-  <StyledWrapper>
-    <Logo />
-    <StyledListWrapper>
-      <StyledUnorderedList>
+const StyledMenuAccordion = styled.ul`
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  margin: 0;
+  padding-left: 0;
+  width: 100%;
+  transition: transform 0.3s;
+  li {
+    margin-bottom: 20px;
+  }
+  transform: translateY(${({ isVisible }) => (isVisible ? '0' : '-100%')});
+  opacity: (${({ isVisible }) => (isVisible ? '0' : '1')});
+`;
+
+const Navbar = ({ location: { pathname } }) => {
+  const [isMenuAccordionVisible, setMenuAccordion] = useState(false);
+  return (
+    <>
+      <StyledWrapper>
+        <Logo />
+        <StyledListWrapper>
+          <StyledUnorderedList>
+            <StyledListItem className={pathname === '/' && 'active'}>
+              <StyledNavLink exact to="/">
+                Strona Główna
+              </StyledNavLink>
+            </StyledListItem>
+            <StyledListItem className={pathname.includes('/books') && 'active'}>
+              <StyledNavLink to="/books">Książki</StyledNavLink>
+            </StyledListItem>
+            <StyledListItem className={pathname.includes('/magazines') && 'active'}>
+              <StyledNavLink to="/magazines">Czasopisma</StyledNavLink>
+            </StyledListItem>
+            <StyledListItem className={pathname.includes('/schoolbooks') && 'active'}>
+              <StyledNavLink to="/schoolbooks">Podręczniki</StyledNavLink>
+            </StyledListItem>
+            <StyledListItem className={pathname.includes('/my-account') && 'active'}>
+              <StyledNavLink to="/my-account">Moje konto</StyledNavLink>
+            </StyledListItem>
+          </StyledUnorderedList>
+          <StyledMenuIcon onClick={() => setMenuAccordion(!isMenuAccordionVisible)} />
+          <Link to="/cart">
+            <StyledCartIcon />
+          </Link>
+        </StyledListWrapper>
+      </StyledWrapper>
+      <StyledMenuAccordion isVisible={isMenuAccordionVisible}>
         <StyledListItem className={pathname === '/' && 'active'}>
           <StyledNavLink exact to="/">
             Strona Główna
           </StyledNavLink>
         </StyledListItem>
-        <StyledListItem className={pathname === '/books' && 'active'}>
+        <StyledListItem className={pathname.includes('/books') && 'active'}>
           <StyledNavLink to="/books">Książki</StyledNavLink>
         </StyledListItem>
-        <StyledListItem className={pathname === '/magazines' && 'active'}>
+        <StyledListItem className={pathname.includes('/magazines') && 'active'}>
           <StyledNavLink to="/magazines">Czasopisma</StyledNavLink>
         </StyledListItem>
-        <StyledListItem className={pathname === '/schoolbooks' && 'active'}>
+        <StyledListItem className={pathname.includes('/schoolbooks') && 'active'}>
           <StyledNavLink to="/schoolbooks">Podręczniki</StyledNavLink>
         </StyledListItem>
-        <StyledListItem className={pathname === '/my-account' && 'active'}>
+        <StyledListItem className={pathname.includes('/my-account') && 'active'}>
           <StyledNavLink to="/my-account">Moje konto</StyledNavLink>
         </StyledListItem>
-      </StyledUnorderedList>
-      <StyledMenuIcon />
-      <Link to="/cart">
-        <StyledCartIcon />
-      </Link>
-    </StyledListWrapper>
-  </StyledWrapper>
-);
+      </StyledMenuAccordion>
+    </>
+  );
+};
 
 Navbar.propTypes = {
   location: PropTypes.string.isRequired,

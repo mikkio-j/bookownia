@@ -5,6 +5,7 @@ import { ThemeProvider } from 'styled-components';
 
 export const parameters = {
   actions: { argTypesRegex: '^on[A-Z].*' },
+  layout: 'fullscreen',
 };
 
 const withThemeProvider = (Story, context) => {

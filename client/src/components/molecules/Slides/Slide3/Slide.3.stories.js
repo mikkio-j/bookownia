@@ -1,10 +1,10 @@
 import React from 'react';
 import { BrowserRouter } from 'react-router-dom';
-import Navbar from './Navbar';
+import Slide3 from './Slide3';
 
 export default {
-  title: 'Bookownia/Organisms/Navbar',
-  component: Navbar,
+  title: 'Bookownia/Molecules/Slide3',
+  component: Slide3,
   decorators: [
     (Story) => (
       <BrowserRouter>
@@ -12,9 +12,8 @@ export default {
       </BrowserRouter>
     ),
   ],
-  layout: 'fullscreen',
 };
 
-const Template = (args) => <Navbar {...args} />;
+const Template = () => <Slide3 />;
 
 export const Normal = Template.bind({});

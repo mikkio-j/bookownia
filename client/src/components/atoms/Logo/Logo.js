@@ -9,7 +9,7 @@ const StyledHeader = styled.header`
   display: flex;
   align-items: center;
 
-  @media ${({ theme }) => theme.device.mobileM} {
+  @media ${({ theme }) => theme.device.tablet} {
     width: 200px;
     height: 70px;
   }
@@ -20,7 +20,7 @@ const StyledHeaderText = styled.h1`
   color: ${({ theme: { colors } }) => colors.primary};
   font-size: ${({ theme: { fontSize } }) => fontSize.xl};
 
-  @media ${({ theme }) => theme.device.mobileM} {
+  @media ${({ theme }) => theme.device.tablet} {
     font-size: ${({ theme: { fontSize } }) => fontSize.m};
   }
 `;

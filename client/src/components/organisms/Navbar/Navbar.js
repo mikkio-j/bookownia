@@ -15,15 +15,15 @@ const StyledWrapper = styled.nav`
   background-color: #fff;
   z-index: 9999;
   position: relative;
-  @media ${({ theme }) => theme.device.laptop} {
-    height: 80px;
-  }
+  padding: 0 20px;
 `;
 
 const StyledListWrapper = styled.div`
   display: flex;
   align-items: center;
+  justify-content: flex-end;
   height: 100%;
+  width: 60%;
 `;
 
 const StyledCartIcon = styled.div`
@@ -67,7 +67,7 @@ const StyledMenuIcon = styled.div`
 `;
 
 const StyledUnorderedList = styled.ul`
-  width: 700px;
+  width: 100%;
   height: 100%;
   display: flex;
   align-items: center;

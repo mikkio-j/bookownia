@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
 const StyledButton = styled.div`
   display: flex;
@@ -18,6 +18,11 @@ const StyledButton = styled.div`
   &:hover {
     background-color: #ff954f;
   }
+  ${({ alt }) =>
+    alt &&
+    css`
+      background-color: ${({ theme }) => theme.colors.primary};
+    `};
 `;
 
 export default StyledButton;

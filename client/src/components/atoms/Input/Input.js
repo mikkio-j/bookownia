@@ -20,6 +20,9 @@ const StyledInput = styled.input`
       background-size: 15px;
       background-position: 10px 50%;
       background-repeat: no-repeat;
+      @media (max-width: 500px) {
+        width: 100%;
+      }
     `};
 `;
 

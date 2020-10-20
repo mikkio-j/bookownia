@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import { NavLink, Link, withRouter } from 'react-router-dom';
+import Sidebar from '../Sidebar/Sidebar';
 import Logo from '../../atoms/Logo/Logo';
 import CartIcon from '../../../assets/icons/cart.svg';
 import MenuIcon from '../../../assets/icons/menu.svg';
@@ -16,6 +17,14 @@ const StyledWrapper = styled.nav`
   z-index: 9999;
   position: relative;
   padding: 0 20px;
+  @media (max-width: 800px) {
+    position: fixed;
+    top: 0;
+    left: 0;
+  }
+  @media (max-width: 360px) {
+    padding: 0;
+  }
 `;
 
 const StyledListWrapper = styled.div`
@@ -44,6 +53,9 @@ const StyledCartIcon = styled.div`
   @media ${({ theme }) => theme.device.laptop} {
     margin-left: 15px;
   }
+  @media (max-width: 360px) {
+    margin-left: 0;
+  }
 `;
 
 const StyledMenuIcon = styled.div`
@@ -63,6 +75,9 @@ const StyledMenuIcon = styled.div`
   }
   @media ${({ theme }) => theme.device.laptop} {
     display: block;
+  }
+  @media (max-width: 360px) {
+    margin-left: 0;
   }
 `;
 
@@ -101,23 +116,8 @@ const StyledNavLink = styled(NavLink)`
   }
 `;
 
-const StyledMenuAccordion = styled.ul`
-  display: none;
-  flex-direction: column;
-  align-items: center;
-  margin: 0;
-  padding-left: 0;
-  width: 100%;
-  transition: transform 0.3s;
-  li {
-    margin-bottom: 20px;
-  }
-  transform: translateY(${({ isVisible }) => (isVisible ? '0' : '-100%')});
-  opacity: (${({ isVisible }) => (isVisible ? '0' : '1')});
-`;
-
 const Navbar = ({ location: { pathname } }) => {
-  const [isMenuAccordionVisible, setMenuAccordion] = useState(false);
+  const [isMenuVisible, setMenu] = useState(false);
   return (
     <>
       <StyledWrapper>
@@ -142,31 +142,13 @@ const Navbar = ({ location: { pathname } }) => {
               <StyledNavLink to="/my-account">Moje konto</StyledNavLink>
             </StyledListItem>
           </StyledUnorderedList>
-          <StyledMenuIcon onClick={() => setMenuAccordion(!isMenuAccordionVisible)} />
+          <StyledMenuIcon onClick={() => setMenu(!isMenuVisible)} />
           <Link to="/cart">
             <StyledCartIcon />
           </Link>
         </StyledListWrapper>
       </StyledWrapper>
-      <StyledMenuAccordion isVisible={isMenuAccordionVisible}>
-        <StyledListItem className={pathname === '/' && 'active'}>
-          <StyledNavLink exact to="/">
-            Strona Główna
-          </StyledNavLink>
-        </StyledListItem>
-        <StyledListItem className={pathname.includes('/books') && 'active'}>
-          <StyledNavLink to="/books">Książki</StyledNavLink>
-        </StyledListItem>
-        <StyledListItem className={pathname.includes('/magazines') && 'active'}>
-          <StyledNavLink to="/magazines">Czasopisma</StyledNavLink>
-        </StyledListItem>
-        <StyledListItem className={pathname.includes('/schoolbooks') && 'active'}>
-          <StyledNavLink to="/schoolbooks">Podręczniki</StyledNavLink>
-        </StyledListItem>
-        <StyledListItem className={pathname.includes('/my-account') && 'active'}>
-          <StyledNavLink to="/my-account">Moje konto</StyledNavLink>
-        </StyledListItem>
-      </StyledMenuAccordion>
+      <Sidebar isVisible={isMenuVisible} />
     </>
   );
 };

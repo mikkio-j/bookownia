@@ -11,6 +11,9 @@ const StyledWrapper = styled.div`
   height: 650px;
   background-color: ${({ theme }) => theme.colors.lightBackground};
   overflow: hidden;
+  @media (max-width: 800px) {
+    height: calc(100vh - 220px);
+  }
 `;
 const StyledHeaderText = styled.h2`
   position: absolute;
@@ -22,6 +25,16 @@ const StyledHeaderText = styled.h2`
   left: 250px;
   top: 50px;
   transform: translateX(-15%);
+  overflow: hidden;
+  @media (max-width: 800px) {
+    left: 0;
+    width: 100%;
+    transform: translateX(0);
+    text-align: center;
+    font-size: 36px;
+    top: auto;
+    bottom: 120px;
+  }
 `;
 
 const StyledBackgroundScientist = styled.div`
@@ -32,6 +45,9 @@ const StyledBackgroundScientist = styled.div`
   background-size: cover;
   width: 700px;
   height: 700px;
+  @media (max-width: 800px) {
+    display: none;
+  }
 `;
 const StyledBackgroundBoy = styled.div`
   position: absolute;
@@ -41,6 +57,15 @@ const StyledBackgroundBoy = styled.div`
   background-size: 100%;
   width: 1000px;
   height: 700px;
+  @media (max-width: 800px) {
+    width: 400px;
+    position: static;
+    width: 100%;
+    /* right: 0;
+    left: -50px;
+    bottom: 0px;*/
+    background-repeat: no-repeat;
+  }
 `;
 
 const StyledLink = styled(Link)`
@@ -49,6 +74,17 @@ const StyledLink = styled(Link)`
   text-decoration: none;
   left: 250px;
   bottom: 100px;
+  @media (max-width: 800px) {
+    left: 0;
+    width: 100%;
+    bottom: 50px;
+  }
+`;
+const StyledButton = styled(Button)`
+  @media (max-width: 800px) {
+    width: 80%;
+    margin: 0 auto;
+  }
 `;
 const Slide1 = () => (
   <StyledWrapper>
@@ -57,7 +93,7 @@ const Slide1 = () => (
     <StyledHeaderText>Przygotuj się na jesień!</StyledHeaderText>
 
     <StyledLink to="/books">
-      <Button>sprawdź</Button>
+      <StyledButton>sprawdź</StyledButton>
     </StyledLink>
   </StyledWrapper>
 );

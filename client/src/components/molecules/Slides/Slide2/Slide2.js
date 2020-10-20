@@ -11,6 +11,10 @@ const StyledWrapper = styled.div`
   background-image: url(${BooksImage});
   background-size: cover;
   overflow: hidden;
+  @media (max-width: 800px) {
+    height: calc(100vh - 220px);
+    background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url(${BooksImage});
+  }
 `;
 
 const StyledTextWrapper = styled.div`
@@ -21,6 +25,10 @@ const StyledTextWrapper = styled.div`
   margin-top: 50px;
   margin-left: auto;
   margin-right: 100px;
+  z-index: 9999;
+  @media (max-width: 800px) {
+    width: 100%;
+  }
 `;
 const StyledHeaderText = styled.h2`
   color: white;
@@ -28,6 +36,9 @@ const StyledHeaderText = styled.h2`
   font-size: 50px;
   font-family: 'Roboto';
   z-index: 1;
+  @media (max-width: 800px) {
+    font-size: 36px;
+  }
 `;
 
 const StyledText = styled.h2`
@@ -38,6 +49,9 @@ const StyledText = styled.h2`
   font-size: 50px;
   font-family: 'Roboto';
   z-index: 1;
+  @media (max-width: 800px) {
+    font-size: 36px;
+  }
 `;
 
 const StyledLink = styled(Link)`

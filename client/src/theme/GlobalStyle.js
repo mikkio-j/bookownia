@@ -15,6 +15,9 @@ body {
     margin: 0;
     padding: 0;
     background: #fff;
+    @media (max-width: 800px) {
+    padding-top: 120px;
+  }
 }
 `;
 

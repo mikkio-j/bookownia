@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import styled, { css } from 'styled-components';
+import styled from 'styled-components';
 import { NavLink, withRouter } from 'react-router-dom';
 
 const StyledWrapper = styled.nav`
@@ -9,7 +9,7 @@ const StyledWrapper = styled.nav`
   bottom: 0;
   left: 0;
   width: 100%;
-  height: 60px;
+  height: 65px;
   z-index: 9999;
   background-color: white;
   border-top: 1px solid rgba(0, 0, 0, 0.1);
@@ -52,7 +52,7 @@ const StyledListItem = styled.li`
 const StyledIcon = styled.i`
   font-size: 28px;
 `;
-const Sidebar = ({ location: { pathname }, isVisible }) => (
+const NavbarMobile = ({ location: { pathname }, isVisible }) => (
   <StyledWrapper isVisible={isVisible}>
     <StyledUnorderedList>
       <StyledListItem className={pathname === '/' && 'active'}>
@@ -83,10 +83,10 @@ const Sidebar = ({ location: { pathname }, isVisible }) => (
   </StyledWrapper>
 );
 
-Sidebar.propTypes = {
+NavbarMobile.propTypes = {
   location: PropTypes.string.isRequired,
   pathname: PropTypes.string.isRequired,
   isVisible: PropTypes.bool.isRequired,
 };
 
-export default withRouter(Sidebar);
+export default withRouter(NavbarMobile);

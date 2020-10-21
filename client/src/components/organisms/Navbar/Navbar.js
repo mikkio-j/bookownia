@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import { NavLink, Link, withRouter } from 'react-router-dom';
-import Sidebar from '../Sidebar/Sidebar';
+import NavbarMobile from '../NavbarMobile/NavbarMobile';
 import Logo from '../../atoms/Logo/Logo';
 import CartIcon from '../../../assets/icons/cart.svg';
 // import MenuIcon from '../../../assets/icons/menu.svg';
@@ -22,6 +22,7 @@ const StyledWrapper = styled.nav`
     top: 0;
     left: 0;
     width: 100%;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
   }
   @media (max-width: 475px) {
     height: 80px;
@@ -139,7 +140,7 @@ const Navbar = ({ location: { pathname } }) => (
         </Link>
       </StyledListWrapper>
     </StyledWrapper>
-    <Sidebar />
+    <NavbarMobile />
   </>
 );
 

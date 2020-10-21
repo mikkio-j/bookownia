@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 import Button from '../../../atoms/Button/Button';
 import ScientistVector from '../../../../assets/pictures/scientist.svg';
-import BoyReadingVector from '../../../../assets/pictures/boy_reading.svg';
+import BoyReadingVector from '../../../../assets/pictures/Frame.png';
 
 const StyledWrapper = styled.div`
   position: relative;
@@ -59,19 +59,19 @@ const StyledBackgroundBoy = styled.div`
   right: -50px;
   background: url(${BoyReadingVector});
   background-size: 100%;
-  width: 1000px;
-  height: 700px;
+  width: 720px;
+  height: 500px;
   @media (max-width: 800px) {
-    width: 400px;
     position: static;
-    width: 100%;
+    width: 90%;
+    margin: 20px auto;
     /* right: 0;
     left: -50px;
     bottom: 0px;*/
     background-repeat: no-repeat;
   }
   @media (max-width: 320px) {
-    margin-top: 40px;
+    opacity: 0.2;
   }
 `;
 

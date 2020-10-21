@@ -9,14 +9,18 @@ import Slide3 from '../../molecules/Slides/Slide3/Slide3';
 const StyledDot = styled.div`
   display: inline-block;
   margin-right: 10px;
-  width: 25px;
-  height: 25px;
+  width: 18px;
+  height: 18px;
   border-radius: 50%;
   outline: none;
   background-color: ${({ active, theme }) =>
     active ? theme.colors.secondary : theme.colors.lightgray};
   &:hover {
     cursor: pointer;
+  }
+  @media (max-width: 375px) {
+    width: 10px;
+    height: 10px;
   }
 `;
 

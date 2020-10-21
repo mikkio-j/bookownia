@@ -13,7 +13,7 @@ const StyledWrapper = styled.div`
   background-size: cover;
   overflow: hidden;
   @media (max-width: 800px) {
-    height: calc(100vh - 220px);
+    height: calc(100vh - 200px);
   }
 `;
 
@@ -33,10 +33,15 @@ const StyledTextWrapper = styled.div`
   z-index: 9999;
   @media (max-width: 800px) {
     position: static;
+    margin: 0 auto;
     margin-top: 50px;
-    width: 100%;
+    width: 90%;
     height: 180px;
     padding: 0 20px;
+  }
+  @media (max-width: 320px) {
+    margin-top: 10px;
+    height: 150px;
   }
 `;
 const StyledStudentImage = styled.div`
@@ -52,10 +57,8 @@ const StyledStudentImage = styled.div`
     height: 700px;
     bottom: -350px;
   }
-  @media (max-width: 320px) {
-    width: 200px;
-    height: 400px;
-    bottom: -200px;
+  @media (max-width: 365px) {
+    display: none;
   }
 `;
 const StyledText = styled.h2`
@@ -69,6 +72,9 @@ const StyledText = styled.h2`
   @media (max-width: 800px) {
     width: 100%;
     font-size: 26px;
+  }
+  @media (max-width: 320px) {
+    font-size: 20px;
   }
 `;
 
@@ -86,6 +92,12 @@ const StyledButton = styled(Button)`
     width: 80%;
     height: 50px;
     margin: 0 auto;
+  }
+  @media (max-width: 800px) {
+    width: 60%;
+    height: 30px;
+    margin: 0 auto;
+    font-size: 16px;
   }
 `;
 const Slide2 = () => (

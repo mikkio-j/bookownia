@@ -18,6 +18,9 @@ body {
     @media (max-width: 800px) {
     padding-top: 120px;
   }
+  @media (max-width: 475px) {
+    padding-top: 80px;
+  }
 }
 `;
 

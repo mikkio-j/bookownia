@@ -12,7 +12,7 @@ const StyledWrapper = styled.div`
   background-color: ${({ theme }) => theme.colors.lightBackground};
   overflow: hidden;
   @media (max-width: 800px) {
-    height: calc(100vh - 220px);
+    height: calc(100vh - 200px);
   }
 `;
 const StyledHeaderText = styled.h2`
@@ -34,6 +34,10 @@ const StyledHeaderText = styled.h2`
     font-size: 36px;
     top: auto;
     bottom: 120px;
+  }
+  @media (max-width: 320px) {
+    top: -30px;
+    bottom: auto;
   }
 `;
 
@@ -66,6 +70,9 @@ const StyledBackgroundBoy = styled.div`
     bottom: 0px;*/
     background-repeat: no-repeat;
   }
+  @media (max-width: 320px) {
+    margin-top: 40px;
+  }
 `;
 
 const StyledLink = styled(Link)`
@@ -84,6 +91,9 @@ const StyledButton = styled(Button)`
   @media (max-width: 800px) {
     width: 80%;
     margin: 0 auto;
+  }
+  @media (max-width: 320px) {
+    height: 50px;
   }
 `;
 const Slide1 = () => (

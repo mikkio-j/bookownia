@@ -12,7 +12,7 @@ const StyledWrapper = styled.div`
   background-size: cover;
   overflow: hidden;
   @media (max-width: 800px) {
-    height: calc(100vh - 220px);
+    height: calc(100vh - 200px);
     background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url(${BooksImage});
   }
 `;
@@ -29,6 +29,9 @@ const StyledTextWrapper = styled.div`
   @media (max-width: 800px) {
     width: 100%;
   }
+  @media (max-width: 320px) {
+    margin-top: 0px;
+  }
 `;
 const StyledHeaderText = styled.h2`
   color: white;
@@ -38,6 +41,9 @@ const StyledHeaderText = styled.h2`
   z-index: 1;
   @media (max-width: 800px) {
     font-size: 36px;
+  }
+  @media (max-width: 320px) {
+    font-size: 26px;
   }
 `;
 
@@ -52,11 +58,32 @@ const StyledText = styled.h2`
   @media (max-width: 800px) {
     font-size: 36px;
   }
+  @media (max-width: 800px) {
+    font-size: 36px;
+  }
+  @media (max-width: 320px) {
+    font-size: 20px;
+  }
 `;
 
 const StyledLink = styled(Link)`
   z-index: 9999;
   text-decoration: none;
+  @media (max-width: 320px) {
+    left: 0;
+    width: 100%;
+    bottom: 50px;
+  }
+`;
+
+const StyledButton = styled(Button)`
+  @media (max-width: 320px) {
+    width: 80%;
+    margin: 0 auto;
+  }
+  @media (max-width: 320px) {
+    height: 50px;
+  }
 `;
 const Slide2 = () => (
   <StyledWrapper>
@@ -64,7 +91,7 @@ const Slide2 = () => (
       <StyledHeaderText>Powrót do szkoły!</StyledHeaderText>
       <StyledText>podręczniki szkolne do -25%</StyledText>
       <StyledLink to="/schoolbooks">
-        <Button>sprawdź</Button>
+        <StyledButton>sprawdź</StyledButton>
       </StyledLink>
     </StyledTextWrapper>
   </StyledWrapper>

@@ -36,6 +36,7 @@ class Slider extends Component {
         autoPlay
         stopOnHover={false}
         interval={4000}
+        showThumbs={false}
         renderIndicator={(onClickHandler, isSelected, index, label) => {
           if (isSelected) {
             return (

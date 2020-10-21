@@ -57,6 +57,12 @@ const StyledStudentImage = styled.div`
     height: 700px;
     bottom: -350px;
   }
+  @media (max-width: 414px) and (max-height: 736px) {
+    bottom: -380px;
+  }
+  @media (max-width: 375px) and (max-height: 667px) {
+    bottom: -450px;
+  }
   @media (max-width: 365px) {
     display: none;
   }

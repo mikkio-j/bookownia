@@ -5,6 +5,7 @@ import Theme from '../theme/Theme';
 import Navbar from '../components/organisms/Navbar/Navbar';
 import Slider from '../components/organisms/Slider/Slider';
 import IconSection from '../components/molecules/IconSection/IconSection';
+import BestsellersSlider from '../components/organisms/BestsellersSlider/BestsellersSlider';
 
 const StyledWrapper = styled.div`
   width: 100%;
@@ -19,6 +20,7 @@ const MainTemplate = () => (
         <Navbar />
         <Slider />
         <IconSection />
+        <BestsellersSlider />
       </StyledWrapper>
     </ThemeProvider>
   </>

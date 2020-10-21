@@ -7,6 +7,7 @@ const StyledWrapper = styled.div`
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   align-items: center;
+  margin-top: 50px;
   padding: 20px 0;
   flex-wrap: nowrap;
   @media (max-width: 1050px) {

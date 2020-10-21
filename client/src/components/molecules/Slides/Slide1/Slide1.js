@@ -35,6 +35,9 @@ const StyledHeaderText = styled.h2`
     top: auto;
     bottom: 120px;
   }
+  @media (max-width: 375px) and (max-height: 667px) {
+    bottom: 90px;
+  }
   @media (max-width: 320px) {
     top: -30px;
     bottom: auto;

@@ -61,11 +61,17 @@ const Icon = ({ sale, service, payments, header, description }) => (
 );
 
 Icon.propTypes = {
-  sale: PropTypes.bool.isRequired,
-  service: PropTypes.bool.isRequired,
-  payments: PropTypes.bool.isRequired,
+  sale: PropTypes.bool,
+  service: PropTypes.bool,
+  payments: PropTypes.bool,
   header: PropTypes.string.isRequired,
   description: PropTypes.string.isRequired,
+};
+
+Icon.defaultProps = {
+  sale: false,
+  service: false,
+  payments: false,
 };
 
 export default Icon;

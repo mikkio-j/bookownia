@@ -52,8 +52,8 @@ const StyledListItem = styled.li`
 const StyledIcon = styled.i`
   font-size: 28px;
 `;
-const NavbarMobile = ({ location: { pathname }, isVisible }) => (
-  <StyledWrapper isVisible={isVisible}>
+const NavbarMobile = ({ location: { pathname } }) => (
+  <StyledWrapper>
     <StyledUnorderedList>
       <StyledListItem className={pathname === '/' && 'active'}>
         <StyledNavLink exact to="/">
@@ -84,9 +84,15 @@ const NavbarMobile = ({ location: { pathname }, isVisible }) => (
 );
 
 NavbarMobile.propTypes = {
-  location: PropTypes.string.isRequired,
-  pathname: PropTypes.string.isRequired,
-  isVisible: PropTypes.bool.isRequired,
+  location: PropTypes.shape({
+    pathname: PropTypes.string.isRequired,
+  }),
+};
+
+NavbarMobile.defaultProps = {
+  location: {
+    pathname: '/',
+  },
 };
 
 export default withRouter(NavbarMobile);

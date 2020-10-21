@@ -145,8 +145,15 @@ const Navbar = ({ location: { pathname } }) => (
 );
 
 Navbar.propTypes = {
-  location: PropTypes.string.isRequired,
-  pathname: PropTypes.string.isRequired,
+  location: PropTypes.shape({
+    pathname: PropTypes.string.isRequired,
+  }),
+};
+
+Navbar.defaultProps = {
+  location: {
+    pathname: '/',
+  },
 };
 
 export default withRouter(Navbar);

@@ -23,7 +23,6 @@ body {
     padding-top: 80px;
   }
 }
-
 `;
 
 export default GlobalStyle;

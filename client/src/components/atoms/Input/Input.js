@@ -10,6 +10,10 @@ const StyledInput = styled.input`
   width: 250px;
   height: 45px;
   font-weight: ${({ theme }) => theme.bold};
+  &::placeholder {
+    opacity: 0.4;
+    font-weight: ${({ theme }) => theme.regular};
+  }
   ${({ search }) =>
     search &&
     css`

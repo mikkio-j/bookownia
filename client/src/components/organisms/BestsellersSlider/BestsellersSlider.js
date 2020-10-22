@@ -90,6 +90,7 @@ class BestsellersSlider extends Component {
           autoPlay={false}
           showThumbs={false}
           showIndicators={false}
+          transitionTime={1000}
           renderArrowPrev={(onClickHandler, hasPrev, label) =>
             hasPrev && <StyledArrowIcon left type="button" onClick={onClickHandler} label={label} />
           }

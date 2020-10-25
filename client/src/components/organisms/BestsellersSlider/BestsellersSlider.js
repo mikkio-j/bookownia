@@ -23,12 +23,41 @@ const StyledBookWrapper = styled.div`
   background-color: #fff;
   padding: 0 80px;
 `;
+
+const StyledGridBookWrapper = styled.div`
+  display: none;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  padding: 0 40px;
+  @media (max-width: 850px) {
+    display: flex;
+  }
+  @media (max-width: 410px) {
+    justify-content: center;
+  }
+  div {
+    margin: 10px 2px;
+  }
+`;
+
 const StyledTextWrapper = styled.section`
   display: flex;
   justify-content: space-between;
   align-items: center;
   margin-bottom: 20px;
   padding: 0 20px;
+`;
+
+const StyledHeading = styled(Heading)`
+  @media (max-width: 450px) {
+    font-size: 26px;
+  }
+`;
+
+const StyledText = styled(Text)`
+  @media (max-width: 280px) {
+    font-size: 14px;
+  }
 `;
 
 const StyledArrowIcon = styled.button`
@@ -52,6 +81,12 @@ const StyledArrowIcon = styled.button`
       left: 0;
       right: auto;
     `}
+`;
+
+const StyledCarousel = styled(Carousel)`
+  @media (max-width: 850px) {
+    display: none;
+  }
 `;
 
 class BestsellersSlider extends Component {
@@ -78,12 +113,12 @@ class BestsellersSlider extends Component {
       <>
         <StyledWrapper>
           <StyledTextWrapper>
-            <Heading>Bestsellery</Heading>
-            <Text>zobacz więcej</Text>
+            <StyledHeading>Bestsellery</StyledHeading>
+            <StyledText>zobacz więcej</StyledText>
           </StyledTextWrapper>
         </StyledWrapper>
 
-        <Carousel
+        <StyledCarousel
           showArrows
           showStatus={false}
           infiniteLoop
@@ -140,7 +175,21 @@ class BestsellersSlider extends Component {
               </>
             )}
           </StyledBookWrapper>
-        </Carousel>
+        </StyledCarousel>
+        <StyledGridBookWrapper>
+          <Book bookCover={BookCover} title="Lockdown" author="Robert Ziębiński" price={25} />
+          <Book bookCover={BookCover} title="Lockdown" author="Robert Ziębiński" price={25} />
+          <Book bookCover={BookCover} title="Lockdown" author="Robert Ziębiński" price={25} />
+          <Book bookCover={BookCover} title="Lockdown" author="Robert Ziębiński" price={25} />
+          {windowWidth > 450 && (
+            <>
+              <Book bookCover={BookCover} title="Lockdown" author="Robert Ziębiński" price={25} />
+              <Book bookCover={BookCover} title="Lockdown" author="Robert Ziębiński" price={25} />
+              <Book bookCover={BookCover} title="Lockdown" author="Robert Ziębiński" price={25} />
+              <Book bookCover={BookCover} title="Lockdown" author="Robert Ziębiński" price={25} />
+            </>
+          )}
+        </StyledGridBookWrapper>
       </>
     );
   }

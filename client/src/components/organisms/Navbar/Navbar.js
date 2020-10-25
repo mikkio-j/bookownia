@@ -25,6 +25,7 @@ const StyledWrapper = styled.nav`
     border-bottom: 1px solid rgba(0, 0, 0, 0.1);
   }
   @media (max-width: 475px) {
+    width: 100%;
     height: 80px;
   }
 `;

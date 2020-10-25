@@ -24,10 +24,10 @@ const MainTemplate = () => (
         <IconSection />
         <BestsellersSlider />
       </StyledWrapper>
-      <Newsletter />
+      {/* <Newsletter />
       <StyledWrapper>
         <Footer />
-      </StyledWrapper>
+      </StyledWrapper> */}
     </ThemeProvider>
   </>
 );

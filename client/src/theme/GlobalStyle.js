@@ -21,6 +21,7 @@ body {
   }
   @media (max-width: 475px) {
     padding-top: 80px;
+    padding-bottom: 80px;
   }
 }
 `;

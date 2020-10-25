@@ -48,6 +48,9 @@ const StyledPicture = styled.div`
   height: 100px;
   background-repeat: no-repeat;
 `;
+const StyledLogo = styled(Logo)`
+  width: 150px;
+`;
 const Newsletter = () => (
   <StyledWrapper>
     <StyledInfoWrapper>
@@ -82,7 +85,7 @@ const Newsletter = () => (
           <StyledList>Masz pocztę w gmailu?</StyledList>
         </StyledUnorderedList>
       </StyledInfoColumn>
-      <Logo />
+      <StyledLogo />
     </StyledInfoWrapper>
     <StyledText>Współpracujemy z:</StyledText>
     <StyledPicture />

@@ -10,7 +10,7 @@ const StyledHeader = styled.header`
   align-items: center;
 
   @media ${({ theme }) => theme.device.tablet} {
-    width: 200px;
+    width: 150px;
     height: 70px;
   }
 `;
@@ -21,7 +21,7 @@ const StyledHeaderText = styled.h1`
   font-size: ${({ theme: { fontSize } }) => fontSize.xl};
 
   @media ${({ theme }) => theme.device.tablet} {
-    font-size: ${({ theme: { fontSize } }) => fontSize.m};
+    font-size: 20px;
   }
 `;
 

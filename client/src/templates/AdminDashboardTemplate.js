@@ -2,6 +2,7 @@ import React from 'react';
 import styled, { css, ThemeProvider } from 'styled-components';
 import GlobalStyle from '../theme/GlobalStyle';
 import Theme from '../theme/Theme';
+import Chart from '../components/organisms/Chart/Chart';
 import Logo from '../assets/pictures/dashboard_logo.svg';
 import BellIcon from '../assets/icons/bell.svg';
 import BellIconNotification from '../assets/icons/bell_notification.svg';
@@ -125,7 +126,46 @@ const StyledChildContainer = styled.section`
 const StyledHeading = styled(Heading)`
   margin-left: 50px;
   color: white;
+  filter: drop-shadow(0px 1px 2px rgba(0, 0, 0, 0.25));
 `;
+const StyledCellWrapper = styled.div`
+  display: flex;
+`;
+const StyledCell = styled.div`
+  width: 280px;
+  height: 74px;
+  margin: 40px 0 0 70px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 700;
+  color: white;
+  font-size: 14px;
+  filter: drop-shadow(0px 1px 4px rgba(0, 0, 0, 0.25));
+  p {
+    margin: 0;
+  }
+  div {
+    display: flex;
+    align-items: center;
+    margin-left: 20px;
+    p {
+      font-size: 30px;
+    }
+    span {
+      color: #0ca324;
+      margin-left: 10px;
+      font-size: 18px;
+      ${({ red }) =>
+        red &&
+        css`
+          color: #ff0000;
+        `}
+    }
+  }
+`;
+
 const AdminDashboardTemplate = () => (
   <>
     <GlobalStyle />
@@ -164,6 +204,30 @@ const AdminDashboardTemplate = () => (
         </StyledNav>
         <StyledChildContainer>
           <StyledHeading>Statystyki</StyledHeading>
+          <StyledCellWrapper>
+            <StyledCell>
+              <p>Całkowity zysk</p>
+              <div>
+                <p>12,500 PLN</p>
+                <span>+3,55%</span>
+              </div>
+            </StyledCell>
+            <StyledCell>
+              <p>Całkowite wydatki</p>
+              <div>
+                <p>2,500 PLN</p>
+                <span>-2,55%</span>
+              </div>
+            </StyledCell>
+            <StyledCell red>
+              <p>Nowi Użytkownicy</p>
+              <div>
+                <p>679</p>
+                <span>-4,76%</span>
+              </div>
+            </StyledCell>
+          </StyledCellWrapper>
+          <Chart />
         </StyledChildContainer>
       </StyledWrapper>
     </ThemeProvider>

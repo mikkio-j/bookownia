@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
 const StyledWrapper = styled.div`
   display: flex;
@@ -14,6 +14,20 @@ const StyledWrapper = styled.div`
   &:hover .overlay {
     opacity: 0.4;
   }
+  div {
+    text-align: center;
+  }
+  ${({ altPosition }) =>
+    altPosition &&
+    css`
+      flex-direction: row;
+      align-items: flex-start;
+      margin-bottom: 20px;
+      div {
+        text-align: left;
+        padding: 0 0 0 10px;
+      }
+    `}
 `;
 
 const StyledBookcover = styled.div`
@@ -24,6 +38,12 @@ const StyledBookcover = styled.div`
 
   background-size: cover;
   transition: 0.3s;
+  ${({ small }) =>
+    small &&
+    css`
+      width: 80px;
+      height: 117px;
+    `}
 `;
 const StyledColorOverlay = styled.div`
   position: absolute;
@@ -34,6 +54,11 @@ const StyledColorOverlay = styled.div`
   opacity: 0;
   background-color: rgba(255, 170, 113, 1);
   transition: 0.3s;
+  ${({ altColor }) =>
+    altColor &&
+    css`
+      background-color: rgba(79, 109, 253, 0.5);
+    `}
 `;
 const StyledText = styled.h5`
   font-size: 24px;
@@ -41,6 +66,17 @@ const StyledText = styled.h5`
   font-weight: medium;
   padding: 0;
   margin: 0;
+  ${({ small }) =>
+    small &&
+    css`
+      font-size: 20px;
+      }
+    `}
+  ${({ altColor }) =>
+    altColor &&
+    css`
+      color: white;
+    `}
 `;
 const StyledDescription = styled.p`
   font-size: 20px;
@@ -48,15 +84,25 @@ const StyledDescription = styled.p`
   font-weight: medium;
   padding: 0;
   margin: 0;
+  ${({ small }) =>
+    small &&
+    css`
+      font-size: 14px;
+      }
+    `}
 `;
-const Book = ({ title, author, price, bookCover }) => (
-  <StyledWrapper bookCover={bookCover}>
-    <StyledBookcover bookCover={bookCover}>
-      <StyledColorOverlay className="overlay" />
+const Book = ({ title, author, price, bookCover, altPosition, showPrice, small, altColor }) => (
+  <StyledWrapper altPosition={altPosition} bookCover={bookCover}>
+    <StyledBookcover small={small} bookCover={bookCover}>
+      <StyledColorOverlay altColor={altColor} small={small} className="overlay" />
     </StyledBookcover>
-    <StyledText>{title}</StyledText>
-    <StyledDescription>{author}</StyledDescription>
-    <StyledText>{price}zł</StyledText>
+    <div>
+      <StyledText altColor={altColor} small={small}>
+        {title}
+      </StyledText>
+      <StyledDescription small={small}>{author}</StyledDescription>
+      {showPrice && <StyledText>{price}zł</StyledText>}
+    </div>
   </StyledWrapper>
 );
 
@@ -65,6 +111,10 @@ Book.propTypes = {
   author: PropTypes.string.isRequired,
   price: PropTypes.number.isRequired,
   bookCover: PropTypes.string.isRequired,
+  altPosition: PropTypes.bool,
+  showPrice: PropTypes.bool,
+  small: PropTypes.bool,
+  altColor: PropTypes.bool,
 };
 
 export default Book;

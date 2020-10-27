@@ -15,4 +15,6 @@ Normal.args = {
   title: 'Lockdown',
   author: 'Robert Ziębiński',
   price: 25,
+  alt: true,
+  showPrice: true,
 };

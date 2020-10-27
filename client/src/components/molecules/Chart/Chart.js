@@ -3,8 +3,8 @@ import Chart from 'react-apexcharts';
 import styled from 'styled-components';
 
 const ChartWrapper = styled.div`
-  margin: 30px 40px;
-  width: 80%;
+  margin: 0;
+  width: 100%;
 `;
 
 class ApexChart extends React.Component {
@@ -23,7 +23,7 @@ class ApexChart extends React.Component {
           colors: ['#F44336', '#E91E63', '#9C27B0'],
         },
         chart: {
-          height: 350,
+          height: 450,
           type: 'area',
           toolbar: {
             show: false,

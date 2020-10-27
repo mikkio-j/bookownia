@@ -1,14 +1,15 @@
 import React from 'react';
-import styled, { css, ThemeProvider } from 'styled-components';
-import GlobalStyle from '../theme/GlobalStyle';
-import Theme from '../theme/Theme';
-import Chart from '../components/organisms/Chart/Chart';
+import PropTypes from 'prop-types';
+import styled, { css } from 'styled-components';
 import Logo from '../assets/pictures/dashboard_logo.svg';
 import BellIcon from '../assets/icons/bell.svg';
 import BellIconNotification from '../assets/icons/bell_notification.svg';
 import SettingsIcon from '../assets/icons/settings.svg';
 import ProfilePicture from '../assets/pictures/user.png';
+import Chart from '../components/molecules/Chart/Chart';
 import Heading from '../components/atoms/Heading/Heading';
+import Book from '../components/atoms/Book/Book';
+import BookCover from '../assets/pictures/book.png';
 
 const StyledWrapper = styled.div`
   width: 100%;
@@ -123,14 +124,16 @@ const StyledChildContainer = styled.section`
   height: calc(100% - 80px);
   align-self: flex-end;
 `;
+
 const StyledHeading = styled(Heading)`
   margin-left: 50px;
   color: white;
   filter: drop-shadow(0px 1px 2px rgba(0, 0, 0, 0.25));
 `;
-const StyledCellWrapper = styled.div`
+const StyledStatisticsWrapper = styled.div`
   display: flex;
 `;
+
 const StyledCell = styled.div`
   width: 280px;
   height: 74px;
@@ -165,72 +168,128 @@ const StyledCell = styled.div`
     }
   }
 `;
+const StyledBuyMost = styled.div`
+  width: 300px;
+  height: 400px;
+  display: flex;
+  flex-direction: column;
+  padding: 0 10px;
+  margin-left: 60px;
+  h1 {
+    color: white;
+    font-size: 22px;
+    margin-bottom: 20px;
+  }
+`;
+
+const StyledChartWrapper = styled.div`
+  width: 60%;
+  position: relative;
+  margin-top: 50px;
+  margin-left: 50px;
+  h1 {
+    position: absolute;
+    color: white;
+    font-size: 18px;
+    left: 50px;
+    top: 5px;
+  }
+`;
 
 const AdminDashboardTemplate = () => (
   <>
-    <GlobalStyle />
-    <ThemeProvider theme={Theme}>
-      <StyledWrapper>
-        <StyledNav>
-          <StyledLogo />
-          <StyledNavCategory>Management</StyledNavCategory>
-          <StyledUnorderedList>
-            <StyledList>
-              <i className="fas fa-chart-pie" />
-              Statystyki
-            </StyledList>
-            <StyledList>
-              <i className="fas fa-user-alt" />
-              Klienci
-            </StyledList>
-            <StyledList>
-              <i className="fas fa-user-alt" />
-              Zamówienia
-            </StyledList>
-            <StyledList>
-              <i className="fas fa-tag" />
-              Produkty
-            </StyledList>
-          </StyledUnorderedList>
-          <StyledProfileSection>
-            <StyledIcon active />
-            <StyledIcon settings />
-            <StyledProfilePicture />
-            <StyledUsertext>
-              Jane Doe
-              <i className="fas fa-chevron-down" />
-            </StyledUsertext>
-          </StyledProfileSection>
-        </StyledNav>
-        <StyledChildContainer>
-          <StyledHeading>Statystyki</StyledHeading>
-          <StyledCellWrapper>
-            <StyledCell>
-              <p>Całkowity zysk</p>
-              <div>
-                <p>12,500 PLN</p>
-                <span>+3,55%</span>
-              </div>
-            </StyledCell>
-            <StyledCell>
-              <p>Całkowite wydatki</p>
-              <div>
-                <p>2,500 PLN</p>
-                <span>-2,55%</span>
-              </div>
-            </StyledCell>
-            <StyledCell red>
-              <p>Nowi Użytkownicy</p>
-              <div>
-                <p>679</p>
-                <span>-4,76%</span>
-              </div>
-            </StyledCell>
-          </StyledCellWrapper>
-          <Chart />
-        </StyledChildContainer>
-      </StyledWrapper>
-    </ThemeProvider>
+    <StyledWrapper>
+      <StyledNav>
+        <StyledLogo />
+        <StyledNavCategory>Management</StyledNavCategory>
+        <StyledUnorderedList>
+          <StyledList>
+            <i className="fas fa-chart-pie" />
+            Statystyki
+          </StyledList>
+          <StyledList>
+            <i className="fas fa-user-alt" />
+            Klienci
+          </StyledList>
+          <StyledList>
+            <i className="fas fa-user-alt" />
+            Zamówienia
+          </StyledList>
+          <StyledList>
+            <i className="fas fa-tag" />
+            Produkty
+          </StyledList>
+        </StyledUnorderedList>
+        <StyledProfileSection>
+          <StyledIcon active />
+          <StyledIcon settings />
+          <StyledProfilePicture />
+          <StyledUsertext>
+            Jane Doe
+            <i className="fas fa-chevron-down" />
+          </StyledUsertext>
+        </StyledProfileSection>
+      </StyledNav>
+      <StyledChildContainer>
+        <StyledHeading>Statystyki</StyledHeading>
+        <StyledStatisticsWrapper>
+          <StyledCell>
+            <p>Całkowity zysk</p>
+            <div>
+              <p>12,500 PLN</p>
+              <span>+3,55%</span>
+            </div>
+          </StyledCell>
+          <StyledCell>
+            <p>Całkowite wydatki</p>
+            <div>
+              <p>2,500 PLN</p>
+              <span>-2,55%</span>
+            </div>
+          </StyledCell>
+          <StyledCell red>
+            <p>Nowi Użytkownicy</p>
+            <div>
+              <p>679</p>
+              <span>-4,76%</span>
+            </div>
+          </StyledCell>
+        </StyledStatisticsWrapper>
+        <StyledStatisticsWrapper>
+          <StyledChartWrapper>
+            <Heading>Raport sprzedaży</Heading>
+            <Chart />
+          </StyledChartWrapper>
+          <StyledBuyMost>
+            <Heading>Najczęściej kupowane</Heading>
+            <Book
+              bookCover={BookCover}
+              title="Lockdown"
+              author="Robert Ziębiński"
+              altPosition
+              altColor
+              small
+            />
+            <Book
+              bookCover={BookCover}
+              title="Lockdown"
+              author="Robert Ziębiński"
+              altPosition
+              altColor
+              small
+            />
+            <Book
+              bookCover={BookCover}
+              title="Lockdown"
+              author="Robert Ziębiński"
+              altPosition
+              altColor
+              small
+            />
+          </StyledBuyMost>
+        </StyledStatisticsWrapper>
+      </StyledChildContainer>
+    </StyledWrapper>
   </>
 );
 

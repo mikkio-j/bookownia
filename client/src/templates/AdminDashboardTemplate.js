@@ -1,15 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { NavLink, withRouter } from 'react-router-dom';
 import styled, { css } from 'styled-components';
 import Logo from '../assets/pictures/dashboard_logo.svg';
 import BellIcon from '../assets/icons/bell.svg';
 import BellIconNotification from '../assets/icons/bell_notification.svg';
 import SettingsIcon from '../assets/icons/settings.svg';
 import ProfilePicture from '../assets/pictures/user.png';
-import Chart from '../components/molecules/Chart/Chart';
-import Heading from '../components/atoms/Heading/Heading';
-import Book from '../components/atoms/Book/Book';
-import BookCover from '../assets/pictures/book.png';
 
 const StyledWrapper = styled.div`
   width: 100%;
@@ -23,6 +20,9 @@ const StyledNav = styled.nav`
   width: 270px;
   height: 100vh;
   border-right: 1px solid rgba(255, 255, 255, 0.05);
+  a {
+    text-decoration: none;
+  }
 `;
 const StyledLogo = styled.div`
   background-image: url(${Logo});
@@ -55,6 +55,9 @@ const StyledList = styled.li`
   }
   &:hover {
     cursor: pointer;
+    background: rgba(99, 129, 255, 0.5);
+  }
+  &.active {
     background: rgba(79, 109, 253, 0.5);
   }
 `;
@@ -125,100 +128,37 @@ const StyledChildContainer = styled.section`
   align-self: flex-end;
 `;
 
-const StyledHeading = styled(Heading)`
-  margin-left: 50px;
-  color: white;
-  filter: drop-shadow(0px 1px 2px rgba(0, 0, 0, 0.25));
-`;
-const StyledStatisticsWrapper = styled.div`
-  display: flex;
-`;
-
-const StyledCell = styled.div`
-  width: 280px;
-  height: 74px;
-  margin: 40px 0 0 70px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  font-family: 'Roboto', sans-serif;
-  font-weight: 700;
-  color: white;
-  font-size: 14px;
-  filter: drop-shadow(0px 1px 4px rgba(0, 0, 0, 0.25));
-  p {
-    margin: 0;
-  }
-  div {
-    display: flex;
-    align-items: center;
-    margin-left: 20px;
-    p {
-      font-size: 30px;
-    }
-    span {
-      color: #0ca324;
-      margin-left: 10px;
-      font-size: 18px;
-      ${({ red }) =>
-        red &&
-        css`
-          color: #ff0000;
-        `}
-    }
-  }
-`;
-const StyledBuyMost = styled.div`
-  width: 300px;
-  height: 400px;
-  display: flex;
-  flex-direction: column;
-  padding: 0 10px;
-  margin-left: 60px;
-  h1 {
-    color: white;
-    font-size: 22px;
-    margin-bottom: 20px;
-  }
-`;
-
-const StyledChartWrapper = styled.div`
-  width: 60%;
-  position: relative;
-  margin-top: 50px;
-  margin-left: 50px;
-  h1 {
-    position: absolute;
-    color: white;
-    font-size: 18px;
-    left: 50px;
-    top: 5px;
-  }
-`;
-
-const AdminDashboardTemplate = () => (
+const AdminDashboardTemplate = ({ children, location: { pathname } }) => (
   <>
     <StyledWrapper>
       <StyledNav>
         <StyledLogo />
         <StyledNavCategory>Management</StyledNavCategory>
         <StyledUnorderedList>
-          <StyledList>
-            <i className="fas fa-chart-pie" />
-            Statystyki
-          </StyledList>
-          <StyledList>
-            <i className="fas fa-user-alt" />
-            Klienci
-          </StyledList>
-          <StyledList>
-            <i className="fas fa-user-alt" />
-            Zamówienia
-          </StyledList>
-          <StyledList>
-            <i className="fas fa-tag" />
-            Produkty
-          </StyledList>
+          <NavLink to="../dashboard/statistics">
+            <StyledList className={pathname.includes('/statistics') && 'active'}>
+              <i className="fas fa-chart-pie" />
+              Statystyki
+            </StyledList>
+          </NavLink>
+          <NavLink to="../dashboard/clients">
+            <StyledList className={pathname.includes('/clients') && 'active'}>
+              <i className="fas fa-user-alt" />
+              Klienci
+            </StyledList>
+          </NavLink>
+          <NavLink to="../dashboard/orders">
+            <StyledList className={pathname.includes('/orders') && 'active'}>
+              <i className="fas fa-shopping-cart" />
+              Zamówienia
+            </StyledList>
+          </NavLink>
+          <NavLink to="../dashboard/products">
+            <StyledList className={pathname.includes('/products') && 'active'}>
+              <i className="fas fa-tag" />
+              Produkty
+            </StyledList>
+          </NavLink>
         </StyledUnorderedList>
         <StyledProfileSection>
           <StyledIcon active />
@@ -230,67 +170,22 @@ const AdminDashboardTemplate = () => (
           </StyledUsertext>
         </StyledProfileSection>
       </StyledNav>
-      <StyledChildContainer>
-        <StyledHeading>Statystyki</StyledHeading>
-        <StyledStatisticsWrapper>
-          <StyledCell>
-            <p>Całkowity zysk</p>
-            <div>
-              <p>12,500 PLN</p>
-              <span>+3,55%</span>
-            </div>
-          </StyledCell>
-          <StyledCell>
-            <p>Całkowite wydatki</p>
-            <div>
-              <p>2,500 PLN</p>
-              <span>-2,55%</span>
-            </div>
-          </StyledCell>
-          <StyledCell red>
-            <p>Nowi Użytkownicy</p>
-            <div>
-              <p>679</p>
-              <span>-4,76%</span>
-            </div>
-          </StyledCell>
-        </StyledStatisticsWrapper>
-        <StyledStatisticsWrapper>
-          <StyledChartWrapper>
-            <Heading>Raport sprzedaży</Heading>
-            <Chart />
-          </StyledChartWrapper>
-          <StyledBuyMost>
-            <Heading>Najczęściej kupowane</Heading>
-            <Book
-              bookCover={BookCover}
-              title="Lockdown"
-              author="Robert Ziębiński"
-              altPosition
-              altColor
-              small
-            />
-            <Book
-              bookCover={BookCover}
-              title="Lockdown"
-              author="Robert Ziębiński"
-              altPosition
-              altColor
-              small
-            />
-            <Book
-              bookCover={BookCover}
-              title="Lockdown"
-              author="Robert Ziębiński"
-              altPosition
-              altColor
-              small
-            />
-          </StyledBuyMost>
-        </StyledStatisticsWrapper>
-      </StyledChildContainer>
+      <StyledChildContainer>{children}</StyledChildContainer>
     </StyledWrapper>
   </>
 );
 
-export default AdminDashboardTemplate;
+AdminDashboardTemplate.propTypes = {
+  location: PropTypes.shape({
+    pathname: PropTypes.string.isRequired,
+  }),
+  children: PropTypes.oneOfType([PropTypes.arrayOf(PropTypes.node), PropTypes.node]).isRequired,
+};
+
+AdminDashboardTemplate.defaultProps = {
+  location: {
+    pathname: '/',
+  },
+};
+
+export default withRouter(AdminDashboardTemplate);

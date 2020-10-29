@@ -17,7 +17,7 @@ const Root = () => (
           <Route exact path="/magazines" component={MainTemplate} />
           <Route exact path="/schoolbooks" component={MainTemplate} />
           <Route exact path="/my-account" component={MainTemplate} />
-          <Route exact path="/dashboard/statistics" component={DashboardStatisticsView} />
+          <Route path="/dashboard" component={DashboardStatisticsView} />
         </Switch>
       </BrowserRouter>
     </ThemeProvider>

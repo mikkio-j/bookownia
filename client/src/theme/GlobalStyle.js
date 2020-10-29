@@ -18,13 +18,7 @@ body {
     margin: 0;
     padding: 0;
     background: #fff;
-    @media (max-width: 800px) {
-    padding-top: 120px;
-  }
-  @media (max-width: 475px) {
-    padding-top: 80px;
-    padding-bottom: 80px;
-  }
+    
 }
 `;
 

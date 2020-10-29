@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import { NavLink, withRouter } from 'react-router-dom';
 
 const StyledWrapper = styled.nav`
@@ -17,6 +17,16 @@ const StyledWrapper = styled.nav`
   @media ${({ theme }) => theme.device.laptop} {
     display: block;
   }
+  ${({ dashboard }) =>
+    dashboard &&
+    css`
+      height: 80px;
+      background: linear-gradient(116.82deg, #4c5b95 0%, #253b68 100%);
+      border-top: 1px solid rgba(255, 255, 255, 0.5);
+      @media (max-width: 1200px) {
+        display: block;
+      }
+    `}
 `;
 
 const StyledUnorderedList = styled.ul`
@@ -43,6 +53,16 @@ const StyledNavLink = styled(NavLink)`
   &.active {
     color: ${({ theme }) => theme.colors.darkgray};
   }
+  ${({ dashboard }) =>
+    dashboard &&
+    css`
+      font-size: 14px;
+      color: #6576a0;
+      font-weight: 400;
+      &.active {
+        color: white;
+      }
+    `}
 `;
 const StyledListItem = styled.li`
   list-style: none;
@@ -52,35 +72,68 @@ const StyledListItem = styled.li`
 const StyledIcon = styled.i`
   font-size: 28px;
 `;
-const NavbarMobile = ({ location: { pathname } }) => (
-  <StyledWrapper>
-    <StyledUnorderedList>
-      <StyledListItem className={pathname === '/' && 'active'}>
-        <StyledNavLink exact to="/">
-          <StyledIcon className="fa fa-home" aria-hidden="true" />
-          Strona Główna
-        </StyledNavLink>
-      </StyledListItem>
-      <StyledListItem className={pathname.includes('/books') && 'active'}>
-        <StyledNavLink to="/books">
-          <StyledIcon className="fas fa-book-open" />
-          Książki
-        </StyledNavLink>
-      </StyledListItem>
-      <StyledListItem className={pathname.includes('/schoolbooks') && 'active'}>
-        <StyledNavLink to="/schoolbooks">
-          <StyledIcon className="fa fa-book" aria-hidden="true" />
-          Podręczniki
-        </StyledNavLink>
-      </StyledListItem>
-      <StyledListItem className={pathname.includes('/my-account') && 'active'}>
-        <StyledNavLink to="/my-account">
-          <StyledIcon className="fa fa-user" aria-hidden="true" />
-          Moje konto
-        </StyledNavLink>
-      </StyledListItem>
-    </StyledUnorderedList>
-  </StyledWrapper>
+const NavbarMobile = ({ location: { pathname }, dashboard }) => (
+  <>
+    {!dashboard ? (
+      <StyledWrapper>
+        <StyledUnorderedList>
+          <StyledListItem className={pathname === '/' && 'active'}>
+            <StyledNavLink exact to="/">
+              <StyledIcon className="fa fa-home" aria-hidden="true" />
+              Strona Główna
+            </StyledNavLink>
+          </StyledListItem>
+          <StyledListItem className={pathname.includes('/books') && 'active'}>
+            <StyledNavLink to="/books">
+              <StyledIcon className="fas fa-book-open" />
+              Książki
+            </StyledNavLink>
+          </StyledListItem>
+          <StyledListItem className={pathname.includes('/schoolbooks') && 'active'}>
+            <StyledNavLink to="/schoolbooks">
+              <StyledIcon className="fa fa-book" aria-hidden="true" />
+              Podręczniki
+            </StyledNavLink>
+          </StyledListItem>
+          <StyledListItem className={pathname.includes('/my-account') && 'active'}>
+            <StyledNavLink to="/my-account">
+              <StyledIcon className="fa fa-user" aria-hidden="true" />
+              Moje konto
+            </StyledNavLink>
+          </StyledListItem>
+        </StyledUnorderedList>
+      </StyledWrapper>
+    ) : (
+      <StyledWrapper dashboard={dashboard}>
+        <StyledUnorderedList>
+          <StyledListItem className={pathname === '/dashboard/statistics' && 'active'}>
+            <StyledNavLink dashboard={dashboard} to="../dashboard/statistics">
+              <StyledIcon className="fas fa-chart-pie" aria-hidden="true" />
+              Statystyki
+            </StyledNavLink>
+          </StyledListItem>
+          <StyledListItem className={pathname.includes('/customers') && 'active'}>
+            <StyledNavLink dashboard={dashboard} to="../dashboard/customers">
+              <StyledIcon className="fas fa-user-alt" />
+              Klienci
+            </StyledNavLink>
+          </StyledListItem>
+          <StyledListItem className={pathname.includes('/orders') && 'active'}>
+            <StyledNavLink dashboard={dashboard} to="../dashboard/orders">
+              <StyledIcon className="fas fa-shopping-cart" aria-hidden="true" />
+              Zamówienia
+            </StyledNavLink>
+          </StyledListItem>
+          <StyledListItem className={pathname.includes('/products') && 'active'}>
+            <StyledNavLink dashboard={dashboard} to="../dashboard/products">
+              <StyledIcon className="fas fa-tag" aria-hidden="true" />
+              Produkty
+            </StyledNavLink>
+          </StyledListItem>
+        </StyledUnorderedList>
+      </StyledWrapper>
+    )}
+  </>
 );
 
 NavbarMobile.propTypes = {

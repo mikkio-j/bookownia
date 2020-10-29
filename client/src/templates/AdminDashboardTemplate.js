@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { NavLink, withRouter } from 'react-router-dom';
 import styled, { css } from 'styled-components';
+import NavbarMobile from '../components/organisms/NavbarMobile/NavbarMobile';
 import Logo from '../assets/pictures/dashboard_logo.svg';
 import BellIcon from '../assets/icons/bell.svg';
 import BellIconNotification from '../assets/icons/bell_notification.svg';
@@ -10,7 +11,7 @@ import ProfilePicture from '../assets/pictures/user.png';
 
 const StyledWrapper = styled.div`
   width: 100%;
-  height: 100vh;
+  min-height: 100vh;
   background: linear-gradient(116.82deg, #5f68b8 0%, #0c2556 100%);
   margin: 0;
   display: flex;
@@ -23,12 +24,21 @@ const StyledNav = styled.nav`
   a {
     text-decoration: none;
   }
+  @media (max-width: 1300px) {
+    width: 200px;
+  }
+  @media (max-width: 1200px) {
+    display: none;
+  }
 `;
 const StyledLogo = styled.div`
   background-image: url(${Logo});
   height: 100px;
   background-position: center;
   background-repeat: no-repeat;
+  @media (max-width: 1300px) {
+    background-size: 90%;
+  }
 `;
 const StyledNavCategory = styled.h3`
   font-family: 'Roboto', sans-serif;
@@ -37,6 +47,9 @@ const StyledNavCategory = styled.h3`
   color: rgba(255, 255, 255, 0.2);
   text-transform: uppercase;
   margin-left: 50px;
+  @media (max-width: 1300px) {
+    margin-left: 10px;
+  }
 `;
 const StyledUnorderedList = styled.ul`
   margin: 0;
@@ -50,6 +63,10 @@ const StyledList = styled.li`
   list-style: none;
   padding: 20px 0 20px 50px;
   transition: 0.3s;
+  @media (max-width: 1300px) {
+    padding: 20px 0 20px 10px;
+    font-size: 14px;
+  }
   i {
     margin-right: 10px;
   }
@@ -70,6 +87,9 @@ const StyledProfileSection = styled.section`
   display: flex;
   align-items: center;
   padding: 40px 60px;
+  @media (max-width: 500px) {
+    padding: 40px 10px;
+  }
 `;
 
 const StyledIcon = styled.div`
@@ -123,13 +143,13 @@ const StyledUsertext = styled.h4`
 `;
 
 const StyledChildContainer = styled.section`
-  width: calc(100% - 320px);
-  height: calc(100% - 80px);
-  align-self: flex-end;
+  margin-top: 20px;
+  width: 100%;
 `;
 
 const AdminDashboardTemplate = ({ children, location: { pathname } }) => (
   <>
+    <NavbarMobile dashboard />
     <StyledWrapper>
       <StyledNav>
         <StyledLogo />
@@ -141,8 +161,8 @@ const AdminDashboardTemplate = ({ children, location: { pathname } }) => (
               Statystyki
             </StyledList>
           </NavLink>
-          <NavLink to="../dashboard/clients">
-            <StyledList className={pathname.includes('/clients') && 'active'}>
+          <NavLink to="../dashboard/customers">
+            <StyledList className={pathname.includes('/customers') && 'active'}>
               <i className="fas fa-user-alt" />
               Klienci
             </StyledList>
@@ -160,16 +180,16 @@ const AdminDashboardTemplate = ({ children, location: { pathname } }) => (
             </StyledList>
           </NavLink>
         </StyledUnorderedList>
-        <StyledProfileSection>
-          <StyledIcon active />
-          <StyledIcon settings />
-          <StyledProfilePicture />
-          <StyledUsertext>
-            Jane Doe
-            <i className="fas fa-chevron-down" />
-          </StyledUsertext>
-        </StyledProfileSection>
       </StyledNav>
+      <StyledProfileSection>
+        <StyledIcon active />
+        <StyledIcon settings />
+        <StyledProfilePicture />
+        <StyledUsertext>
+          Jane Doe
+          <i className="fas fa-chevron-down" />
+        </StyledUsertext>
+      </StyledProfileSection>
       <StyledChildContainer>{children}</StyledChildContainer>
     </StyledWrapper>
   </>

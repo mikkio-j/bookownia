@@ -4,14 +4,38 @@ import Chart from '../../molecules/Chart/Chart';
 import Heading from '../../atoms/Heading/Heading';
 import Book from '../../atoms/Book/Book';
 import BookCover from '../../../assets/pictures/book.png';
+import ConfirmationMessage from '../../atoms/Confirmation/ConfirmationMessage';
 
 const StyledHeading = styled(Heading)`
   margin-left: 50px;
   color: white;
   filter: drop-shadow(0px 1px 2px rgba(0, 0, 0, 0.25));
+  @media (max-width: 600px) {
+    margin-left: 10px;
+    margin-top: 50px;
+  }
+  @media (max-width: 350px) {
+    text-align: center;
+  }
 `;
 const StyledStatisticsWrapper = styled.div`
   display: flex;
+  @media (max-width: 900px) {
+    flex-direction: column;
+  }
+`;
+
+const StyledCellsWrapper = styled.div`
+  display: flex;
+  @media (max-width: 900px) {
+    justify-content: space-between;
+    margin-top: 50px;
+    margin-left: 20px;
+  }
+  @media (max-width: 650px) {
+    flex-direction: column;
+    margin-top: 20px;
+  }
 `;
 
 const StyledCell = styled.div`
@@ -47,6 +71,9 @@ const StyledCell = styled.div`
         `}
     }
   }
+  @media (max-width: 900px) {
+    margin: 0;
+  }
 `;
 const StyledBuyMost = styled.div`
   width: 300px;
@@ -59,6 +86,29 @@ const StyledBuyMost = styled.div`
     color: white;
     font-size: 22px;
     margin-bottom: 20px;
+    width: 100%;
+    @media (max-width: 900px) {
+      margin-bottom: 0;
+    }
+    @media (max-width: 600px) {
+      margin-bottom: 20px;
+      text-align: center;
+    }
+  }
+  @media (max-width: 900px) {
+    align-items: flex-start;
+    width: 100%;
+    flex-direction: row;
+    flex-wrap: wrap;
+    height: 200px;
+    margin-bottom: 100px;
+    margin-left: 0px;
+    padding: 0;
+  }
+  @media (max-width: 600px) {
+    flex-direction: column;
+    height: auto;
+    align-items: center;
   }
 `;
 
@@ -74,12 +124,20 @@ const StyledChartWrapper = styled.div`
     left: 50px;
     top: 5px;
   }
+  @media (max-width: 900px) {
+    width: 90%;
+    margin-left: 10px;
+  }
 `;
 
 const AdminDashboardTemplate = () => (
   <>
+    <ConfirmationMessage
+      popup
+      message="Czy na pewno chcesz dopierdolić 20 000 zachorowań? Skutki będą nieodwracalne"
+    />
     <StyledHeading>Statystyki</StyledHeading>
-    <StyledStatisticsWrapper>
+    <StyledCellsWrapper>
       <StyledCell>
         <p>Całkowity zysk</p>
         <div>
@@ -101,7 +159,7 @@ const AdminDashboardTemplate = () => (
           <span>-4,76%</span>
         </div>
       </StyledCell>
-    </StyledStatisticsWrapper>
+    </StyledCellsWrapper>
     <StyledStatisticsWrapper>
       <StyledChartWrapper>
         <Heading>Raport sprzedaży</Heading>

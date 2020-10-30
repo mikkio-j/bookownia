@@ -4,7 +4,6 @@ import Chart from '../../molecules/Chart/Chart';
 import Heading from '../../atoms/Heading/Heading';
 import Book from '../../atoms/Book/Book';
 import BookCover from '../../../assets/pictures/book.png';
-import ConfirmationMessage from '../../atoms/Confirmation/ConfirmationMessage';
 
 const StyledHeading = styled(Heading)`
   margin-left: 50px;
@@ -132,10 +131,6 @@ const StyledChartWrapper = styled.div`
 
 const AdminDashboardTemplate = () => (
   <>
-    <ConfirmationMessage
-      popup
-      message="Czy na pewno chcesz dopierdolić 20 000 zachorowań? Skutki będą nieodwracalne"
-    />
     <StyledHeading>Statystyki</StyledHeading>
     <StyledCellsWrapper>
       <StyledCell>

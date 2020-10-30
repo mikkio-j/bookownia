@@ -4,116 +4,106 @@ import ConfirmationMessage from '../../atoms/Confirmation/ConfirmationMessage';
 
 const data = [
   {
+    id: 213217321,
     name: 'John',
     surname: 'Doe',
     email: 'john@gmail.com',
-    age: 12,
-    gender: 'Male',
-    id: 213217321,
   },
   {
     name: 'Bren',
     surname: 'Spacey',
     email: 'bren@gmail.com',
-    age: 24,
-    gender: 'Male',
     id: 213217321,
   },
   {
     name: 'Marry',
     surname: 'Malone',
     email: 'marry@gmail.com',
-    age: 18,
-    gender: 'Female',
     id: 213217321,
   },
   {
     name: 'Shohail',
     surname: 'Etripen',
     email: 'shohail@gmail.com',
-    age: 25,
-    gender: 'Male',
     id: 213217321,
   },
   {
     name: 'Aseka',
     surname: 'Osaka',
     email: 'aseka@gmail.com',
-    age: 19,
-    gender: 'Female',
     id: 213217321,
   },
   {
     name: 'Meuko',
     surname: 'Maiko',
     email: 'meuko@gmail.com',
-    age: 12,
-    gender: 'Female',
     id: 213217321,
   },
   {
     name: 'John',
     surname: 'Doe',
     email: 'john@gmail.com',
-    age: 12,
-    gender: 'Male',
     id: 213217321,
   },
   {
     name: 'Bren',
     surname: 'Spacey',
     email: 'bren@gmail.com',
-    age: 24,
-    gender: 'Male',
     id: 213217321,
   },
   {
     name: 'Marry',
     surname: 'Malone',
     email: 'marry@gmail.com',
-    age: 18,
-    gender: 'Female',
     id: 213217321,
   },
   {
     name: 'Shohail',
     surname: 'Etripen',
     email: 'shohail@gmail.com',
-    age: 25,
-    gender: 'Male',
     id: 213217321,
   },
   {
     name: 'Aseka',
     surname: 'Osaka',
     email: 'aseka@gmail.com',
-    age: 19,
-    gender: 'Female',
     id: 213217321,
   },
   {
     name: 'Meuko',
     surname: 'Maiko',
     email: 'meuko@gmail.com',
-    age: 12,
-    gender: 'Female',
     id: 213217321,
   },
 ];
 
-const StyledTable = styled.table`
-  display: block;
+const StyledTableHead = styled.div`
+  display: grid;
+  grid-template-columns: repeat(${({ length }) => length + 1}, 1fr);
+  margin-bottom: 10px;
+`;
+
+const StyledTableContent = styled.div`
+  display: grid;
+  grid-template-columns: repeat(${({ length }) => length + 1}, 1fr);
+  height: calc(100vh - 250px);
   overflow-y: scroll;
-  height: 700px;
-  color: rgba(255, 255, 255, 0.5);
-  font-family: 'Roboto';
-  width: 95%;
-  border-spacing: 0 50px 0 0;
-  overflow-y: scroll;
-  margin: 20px 100px;
-  font-weight: 300;
-  border-spacing: 10px;
-  font-size: 26px;
+  i {
+    font-size: 28px;
+    color: white;
+    &.fa-trash:hover {
+      color: red;
+      cursor: pointer;
+    }
+    &:hover {
+      cursor: pointer;
+      color: #6f77ba;
+    }
+    @media (max-width: 600px) {
+      font-size: 16px;
+      margin: 0 15px;
+    }
+  }
   &::-webkit-scrollbar {
     width: 6px;
     height: 6px;
@@ -147,34 +137,44 @@ const StyledTable = styled.table`
   &::-webkit-scrollbar-corner {
     background: transparent;
   }
-  th {
-    color: white;
-    text-align: left;
-    font-weight: 400;
-    font-size: 20px;
-    padding: 0 100px 0 0;
+`;
+
+const StyledHeading = styled.p`
+  font-family: 'Roboto', sans-serif;
+  font-weight: 700;
+  color: white;
+  font-size: 24px;
+  filter: drop-shadow(0px 1px 4px rgba(0, 0, 0, 0.25));
+  &::first-letter {
+    text-transform: uppercase;
   }
-  tr {
-    padding: 10px;
-    &:hover {
-      color: white;
-    }
-    td {
-      cursor: pointer;
-      i {
-        padding: 15px;
-        &.fa-trash:hover {
-          color: red;
-        }
-        &:hover {
-          color: #6f77ba;
-        }
-      }
-    }
+  background-color: rgba(255, 255, 255, 0.1);
+  margin: 0;
+  padding: 24px 0 24px 20px;
+  @media (max-width: 600px) {
+    font-size: 16px;
   }
+`;
+const StyledRow = styled.p`
+  font-family: 'Roboto', sans-serif;
+  font-weight: 400;
+  color: white;
+  font-size: 22px;
+  filter: drop-shadow(0px 1px 4px rgba(0, 0, 0, 0.25));
+  padding-left: 20px;
+  cursor: default;
+  @media (max-width: 600px) {
+    font-size: 14px;
+  }
+`;
+const StyledIcons = styled.div`
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
 `;
 const Table = () => {
   const [popup, setPopup] = useState(false);
+  const headingArray = Object.keys(data[0]);
   return (
     <>
       <ConfirmationMessage
@@ -183,32 +183,29 @@ const Table = () => {
         message="Czy na pewno chcesz usunąć użytkownika?"
       />
 
-      <StyledTable>
-        <thead>
-          <tr>
-            <th>id</th>
-            <th>Imię</th>
-            <th>Nazwisko</th>
-            <th>Email</th>
-            <th>Akcje</th>
-          </tr>
-        </thead>
-        <tbody>
-          {data.map(({ id, name, email, surname }) => (
-            <tr>
-              <td>{id}</td>
-              <td>{name}</td>
-              <td>{surname}</td>
-              <td>{email}</td>
-              <td>
-                <i onClick={(e) => setPopup(true)} className="fas fa-trash" />
+      <div>
+        <StyledTableHead length={headingArray.length}>
+          {headingArray.map((headingItem) => (
+            <StyledHeading>{headingItem}</StyledHeading>
+          ))}
+          <StyledHeading>Akcje</StyledHeading>
+        </StyledTableHead>
+        <StyledTableContent length={headingArray.length}>
+          {data.map((item) => (
+            <>
+              <StyledRow>{item.id}</StyledRow>
+              <StyledRow>{item.name}</StyledRow>
+              <StyledRow>{item.surname}</StyledRow>
+              <StyledRow>{item.email}</StyledRow>
+              <StyledIcons>
+                <i className="fas fa-trash" />
                 <i className="fas fa-edit" />
                 <i className="fas fa-info" />
-              </td>
-            </tr>
+              </StyledIcons>
+            </>
           ))}
-        </tbody>
-      </StyledTable>
+        </StyledTableContent>
+      </div>
     </>
   );
 };

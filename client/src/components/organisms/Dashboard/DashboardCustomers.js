@@ -7,6 +7,12 @@ const StyledHeading = styled(Heading)`
   margin-left: 50px;
   color: white;
   filter: drop-shadow(0px 1px 2px rgba(0, 0, 0, 0.25));
+  @media (max-width: 520px) {
+    margin-left: 20px;
+    font-size: 24px;
+    margin-top: 10px;
+    margin-bottom: 20px;
+  }
 `;
 const StyledStatisticsWrapper = styled.div`
   width: 100%;

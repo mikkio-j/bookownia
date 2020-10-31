@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import Heading from '../../atoms/Heading/Heading';
+import Table from '../../molecules/Table/TableOrders';
 
 const StyledHeading = styled(Heading)`
   margin-left: 50px;
@@ -14,7 +15,9 @@ const StyledStatisticsWrapper = styled.div`
 const DashboardCustomers = () => (
   <>
     <StyledHeading>Zamówienia</StyledHeading>
-    <StyledStatisticsWrapper></StyledStatisticsWrapper>
+    <StyledStatisticsWrapper>
+      <Table />
+    </StyledStatisticsWrapper>
   </>
 );
 

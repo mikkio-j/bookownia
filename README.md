@@ -4,8 +4,8 @@
 
 ## Dashboard view
 
-<img src="https://raw.githubusercontent.com/mikkio-j/bookownia/main/client/screenshots/2.png" alt="Dashboard view"/>
+<img src="https://raw.githubusercontent.com/mikkio-j/bookownia/main/screenshots/2.png" alt="Dashboard view"/>
 
 ## Homepage view
 
-<img src="https://raw.githubusercontent.com/mikkio-j/bookownia/main/client/screenshots/1.png" alt="Homepage view"/>
+<img src="https://raw.githubusercontent.com/mikkio-j/bookownia/main/screenshots/1.png" alt="Homepage view"/>

@@ -1,8 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import Text from '../../atoms/Text/Text';
-import Logo from '../../atoms/Logo/Logo';
-import Logos from '../../../assets/pictures/loga.png';
+import Logo from '../../../assets/pictures/logo.png';
 
 const StyledWrapper = styled.section`
   padding: 20px 30px 0;
@@ -11,24 +10,46 @@ const StyledWrapper = styled.section`
   height: 400px;
   align-items: center;
   max-width: 1400px;
+  @media (max-width: 1000px) {
+    margin-bottom: 300px;
+  }
+
+  @media (max-width: 500px) {
+    margin-bottom: 500px;
+  }
 `;
 
 const StyledInfoWrapper = styled.div`
   display: flex;
   height: 60%;
   width: 100%;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  @media (max-width: 1000px) {
+    justify-content: center;
+  }
 `;
 
 const StyledInfoColumn = styled.div`
   display: flex;
   flex-direction: column;
   width: 25%;
+  @media (max-width: 1000px) {
+    width: 50%;
+    margin-bottom: 20px;
+    text-align: center;
+  }
+  @media (max-width: 500px) {
+    width: 100%;
+  }
 `;
 
 const StyledText = styled(Text)`
   color: ${({ theme }) => theme.colors.primary};
   font-size: 22px;
   margin-bottom: 20px;
+  margin-top: 50px;
 `;
 const StyledUnorderedList = styled.ul`
   margin: 0;
@@ -41,15 +62,19 @@ const StyledList = styled.li`
   font-size: 18px;
   margin-bottom: 1px;
 `;
-const StyledPicture = styled.div`
-  background-image: url(${Logos});
+
+const StyledLogo = styled.div`
+  width: 300px;
+  height: 80px;
+  background-image: url(${Logo});
   background-size: contain;
-  width: 100%;
-  height: 100px;
   background-repeat: no-repeat;
-`;
-const StyledLogo = styled(Logo)`
-  width: 150px;
+  @media (max-width: 1000px) {
+    width: 100%;
+    margin-bottom: 20px;
+    text-align: center;
+    background-position: 50%;
+  }
 `;
 const Newsletter = () => (
   <StyledWrapper>
@@ -87,8 +112,6 @@ const Newsletter = () => (
       </StyledInfoColumn>
       <StyledLogo />
     </StyledInfoWrapper>
-    <StyledText>Współpracujemy z:</StyledText>
-    <StyledPicture />
   </StyledWrapper>
 );
 

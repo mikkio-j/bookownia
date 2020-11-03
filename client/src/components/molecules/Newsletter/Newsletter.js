@@ -19,6 +19,7 @@ const StyledWrapper = styled.section`
   height: 400px;
   align-items: center;
   max-width: 1400px;
+  position: relative;
 `;
 
 const StyledPicture = styled.div`
@@ -28,39 +29,60 @@ const StyledPicture = styled.div`
   background-position-x: 50%;
   background-repeat: no-repeat;
   height: 100%;
+  @media (max-width: 760px) {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    opacity: 0.1;
+  }
 `;
 
 const StyledTextWrapper = styled.div`
   display: flex;
   flex-direction: column;
-  width: 50%;
+  @media (max-width: 360px) {
+    width: 100%;
+    justify-content: center;
+  }
+  z-index: 9999;
 `;
 
 const StyledForm = styled.div`
   display: flex;
   justify-content: flex-end;
+  @media (max-width: 400px) {
+    flex-wrap: wrap;
+  }
 `;
 const StyledInput = styled(Input)`
-  width: 50%;
+  width: 250px;
   height: 45px;
   font-size: 16px;
   font-family: 'Ubuntu';
   color: #253b57;
   padding: 0 20px;
+  margin-bottom: 10px;
 `;
 const StyledButton = styled(Button)`
-  width: 15%;
+  width: 100px;
   height: 45px;
   margin-left: 10px;
   font-size: 16px;
   text-transform: none;
   cursor: pointer;
+  padding: 0 10px;
 `;
 
 const StyledHeading = styled(Heading)`
   margin-bottom: 20px;
   font-size: 36px;
   text-align: right;
+  @media (max-width: 450px) {
+    font-size: 26px;
+  }
 `;
 const StyledText = styled(Text)`
   margin-top: 20px;

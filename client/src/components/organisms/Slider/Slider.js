@@ -8,6 +8,12 @@ import Slide3 from '../../molecules/Slides/Slide3/Slide3';
 
 const StyledWrapper = styled.section`
   width: 100%;
+  @media (max-width: 800px) {
+    margin-top: 120px;
+  }
+  @media (max-width: 760px) {
+    margin-top: 80px;
+  }
 `;
 
 const StyledDot = styled.div`

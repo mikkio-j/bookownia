@@ -22,6 +22,7 @@ const StyledWrapper = styled.div`
     font-family: 'Roboto', sans-serif;
     font-weight: 400;
     text-align: center;
+    margin: auto 0;
   }
   div {
     display: flex;

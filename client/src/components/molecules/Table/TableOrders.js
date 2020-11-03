@@ -221,7 +221,7 @@ const StyledRow = styled.p`
   display: flex;
   align-items: center;
   margin: 10px 0;
-  @media (max-width: 600px) {
+  @media (max-width: 900px) {
     font-size: 14px;
   }
   border-bottom: 1px solid rgba(255, 255, 255, 0.1);
@@ -234,13 +234,15 @@ const StyledIcons = styled.div`
   border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 `;
 const StyledStatus = styled(Status)`
-  width: 60%;
   height: 100%;
   font-size: 14px;
+  min-width: 100px;
 `;
 const Table = () => {
   const [popup, setPopup] = useState(false);
   const headingArray = Object.keys(data[0]);
+  const pickOneRandomElement = (array) => array[Math.floor(Math.random() * array.length)];
+  const statusArray = ['green', 'yellow', 'red'];
   return (
     <>
       <ConfirmationMessage
@@ -271,7 +273,7 @@ const Table = () => {
                 <i className="fas fa-info" />
               </StyledIcons>
               <StyledIcons>
-                <StyledStatus red>gotowe</StyledStatus>
+                <StyledStatus color={pickOneRandomElement(statusArray)} />
               </StyledIcons>
             </>
           ))}

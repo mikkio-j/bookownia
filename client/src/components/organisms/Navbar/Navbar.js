@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import { NavLink, Link, withRouter } from 'react-router-dom';
+import useScrollPosition from '@react-hook/window-scroll';
 import NavbarMobile from '../NavbarMobile/NavbarMobile';
 import Logo from '../../atoms/Logo/Logo';
 import CartIcon from '../../../assets/icons/cart.svg';
@@ -14,7 +15,7 @@ const StyledWrapper = styled.nav`
   justify-content: space-between;
   align-items: center;
   background-color: #fff;
-  z-index: 9999;
+  z-index: 99999;
   position: relative;
   padding: 0 20px;
   @media (max-width: 800px) {
@@ -23,8 +24,16 @@ const StyledWrapper = styled.nav`
     left: 0;
     width: 100%;
     border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    transition: 0.7s;
+    transform: translateY(0);
+    &.hide {
+      transform: translateY(-100%);
+    }
   }
   @media (max-width: 475px) {
+    width: 100%;
+  }
+  @media (max-width: 760px) {
     width: 100%;
     height: 80px;
   }
@@ -51,6 +60,10 @@ const StyledCartIcon = styled.div`
   &:hover {
     cursor: pointer;
     opacity: 0.9;
+  }
+  @media (max-width: 770px) {
+    width: 35px;
+    height: 35px;
   }
 `;
 
@@ -112,38 +125,41 @@ const StyledNavLink = styled(NavLink)`
   }
 `;
 
-const Navbar = ({ location: { pathname } }) => (
-  <>
-    <StyledWrapper>
-      <Logo />
-      <StyledListWrapper>
-        <StyledUnorderedList>
-          <StyledListItem className={pathname === '/' && 'active'}>
-            <StyledNavLink exact to="/">
-              Strona Główna
-            </StyledNavLink>
-          </StyledListItem>
-          <StyledListItem className={pathname.includes('/books') && 'active'}>
-            <StyledNavLink to="/books">Książki</StyledNavLink>
-          </StyledListItem>
-          <StyledListItem className={pathname.includes('/magazines') && 'active'}>
-            <StyledNavLink to="/magazines">Czasopisma</StyledNavLink>
-          </StyledListItem>
-          <StyledListItem className={pathname.includes('/schoolbooks') && 'active'}>
-            <StyledNavLink to="/schoolbooks">Podręczniki</StyledNavLink>
-          </StyledListItem>
-          <StyledListItem className={pathname.includes('/my-account') && 'active'}>
-            <StyledNavLink to="/my-account">Moje konto</StyledNavLink>
-          </StyledListItem>
-        </StyledUnorderedList>
-        <Link to="/cart">
-          <StyledCartIcon />
-        </Link>
-      </StyledListWrapper>
-    </StyledWrapper>
-    <NavbarMobile />
-  </>
-);
+const Navbar = ({ location: { pathname } }) => {
+  const scrollY = useScrollPosition(60);
+  return (
+    <>
+      <StyledWrapper className={scrollY >= 800 && 'hide'}>
+        <Logo />
+        <StyledListWrapper>
+          <StyledUnorderedList>
+            <StyledListItem className={pathname === '/' && 'active'}>
+              <StyledNavLink exact to="/">
+                Strona Główna
+              </StyledNavLink>
+            </StyledListItem>
+            <StyledListItem className={pathname.includes('/books') && 'active'}>
+              <StyledNavLink to="/books">Książki</StyledNavLink>
+            </StyledListItem>
+            <StyledListItem className={pathname.includes('/magazines') && 'active'}>
+              <StyledNavLink to="/magazines">Czasopisma</StyledNavLink>
+            </StyledListItem>
+            <StyledListItem className={pathname.includes('/schoolbooks') && 'active'}>
+              <StyledNavLink to="/schoolbooks">Podręczniki</StyledNavLink>
+            </StyledListItem>
+            <StyledListItem className={pathname.includes('/my-account') && 'active'}>
+              <StyledNavLink to="/my-account">Moje konto</StyledNavLink>
+            </StyledListItem>
+          </StyledUnorderedList>
+          <Link to="/cart">
+            <StyledCartIcon />
+          </Link>
+        </StyledListWrapper>
+      </StyledWrapper>
+      <NavbarMobile />
+    </>
+  );
+};
 
 Navbar.propTypes = {
   location: PropTypes.shape({

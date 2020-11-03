@@ -4,17 +4,20 @@ import Chart from '../../molecules/Chart/Chart';
 import Heading from '../../atoms/Heading/Heading';
 import Book from '../../atoms/Book/Book';
 import BookCover from '../../../assets/pictures/book.png';
+import ConfirmationMessage from '../../atoms/Confirmation/ConfirmationMessage';
 
 const StyledHeading = styled(Heading)`
   margin-left: 50px;
   color: white;
   filter: drop-shadow(0px 1px 2px rgba(0, 0, 0, 0.25));
-  @media (max-width: 600px) {
+  @media (max-width: 650px) {
     margin-left: 10px;
-    margin-top: 50px;
+    font-size: 24px;
+    margin-bottom: 20px;
+    margin-top: 5px;
   }
-  @media (max-width: 350px) {
-    text-align: center;
+  @media (max-width: 400px) {
+    font-size: 18px;
   }
 `;
 const StyledStatisticsWrapper = styled.div`
@@ -131,6 +134,7 @@ const StyledChartWrapper = styled.div`
 
 const AdminDashboardTemplate = () => (
   <>
+    <ConfirmationMessage popup message="Czy chcesz zapisać ustawienia?" />
     <StyledHeading>Statystyki</StyledHeading>
     <StyledCellsWrapper>
       <StyledCell>

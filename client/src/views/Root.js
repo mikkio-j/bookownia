@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter, Switch, Route } from 'react-router-dom';
+import { BrowserRouter, Switch, Route, Redirect } from 'react-router-dom';
 import { ThemeProvider } from 'styled-components';
 import GlobalStyle from '../theme/GlobalStyle';
 import Theme from '../theme/Theme';
@@ -20,7 +20,7 @@ const Root = () => (
           <Route exact path="/magazines" component={MainTemplate} />
           <Route exact path="/schoolbooks" component={MainTemplate} />
           <Route exact path="/my-account" component={MainTemplate} />
-          <Route exact path="/dashboard" component={DashboardStatisticsView} />
+          <Route exact path="/dashboard" render={() => <Redirect to="/dashboard/statistics" />} />
           <Route exact path="/dashboard/statistics" component={DashboardStatisticsView} />
           <Route exact path="/dashboard/customers" component={DashboardCustomersView} />
           <Route exact path="/dashboard/orders" component={DashboardOrdersView} />

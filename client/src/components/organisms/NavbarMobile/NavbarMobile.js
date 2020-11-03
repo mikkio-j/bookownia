@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled, { css } from 'styled-components';
+
 import { NavLink, withRouter } from 'react-router-dom';
 
 const StyledWrapper = styled.nav`
@@ -140,12 +141,14 @@ NavbarMobile.propTypes = {
   location: PropTypes.shape({
     pathname: PropTypes.string.isRequired,
   }),
+  dashboard: PropTypes.bool,
 };
 
 NavbarMobile.defaultProps = {
   location: {
     pathname: '/',
   },
+  dashboard: false,
 };
 
 export default withRouter(NavbarMobile);

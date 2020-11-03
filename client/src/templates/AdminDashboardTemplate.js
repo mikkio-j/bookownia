@@ -116,6 +116,9 @@ const StyledIcon = styled.div`
   &:hover {
     background-color: rgba(79, 109, 253, 0.2);
   }
+  @media (max-width: 400px) {
+    display: none;
+  }
 `;
 
 const StyledProfilePicture = styled.div`

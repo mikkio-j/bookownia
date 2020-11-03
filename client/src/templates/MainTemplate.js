@@ -4,8 +4,8 @@ import Navbar from '../components/organisms/Navbar/Navbar';
 import Slider from '../components/organisms/Slider/Slider';
 import IconSection from '../components/molecules/IconSection/IconSection';
 import BestsellersSlider from '../components/organisms/BestsellersSlider/BestsellersSlider';
-// import Newsletter from '../components/molecules/Newsletter/Newsletter';
-// import Footer from '../components/molecules/Footer/Footer';
+import Newsletter from '../components/molecules/Newsletter/Newsletter';
+import Footer from '../components/molecules/Footer/Footer';
 
 const StyledWrapper = styled.div`
   width: 100%;
@@ -20,10 +20,10 @@ const MainTemplate = () => (
       <IconSection />
       <BestsellersSlider />
     </StyledWrapper>
-    {/* <Newsletter />
-      <StyledWrapper>
-        <Footer />
-      </StyledWrapper> */}
+    <Newsletter />
+    <StyledWrapper>
+      <Footer />
+    </StyledWrapper>
   </>
 );
 

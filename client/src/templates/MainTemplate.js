@@ -1,9 +1,7 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import Navbar from '../components/organisms/Navbar/Navbar';
-import Slider from '../components/organisms/Slider/Slider';
-import IconSection from '../components/molecules/IconSection/IconSection';
-import BestsellersSlider from '../components/organisms/BestsellersSlider/BestsellersSlider';
 import Newsletter from '../components/molecules/Newsletter/Newsletter';
 import Footer from '../components/molecules/Footer/Footer';
 
@@ -12,13 +10,11 @@ const StyledWrapper = styled.div`
   max-width: 1400px;
   margin: 0 auto;
 `;
-const MainTemplate = () => (
+const MainTemplate = ({ children }) => (
   <>
     <StyledWrapper>
       <Navbar />
-      <Slider />
-      <IconSection />
-      <BestsellersSlider />
+      {children}
     </StyledWrapper>
     <Newsletter />
     <StyledWrapper>
@@ -26,5 +22,9 @@ const MainTemplate = () => (
     </StyledWrapper>
   </>
 );
+
+MainTemplate.propTypes = {
+  children: PropTypes.node.isRequired,
+};
 
 export default MainTemplate;

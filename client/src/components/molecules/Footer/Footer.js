@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 import Text from '../../atoms/Text/Text';
 import Logo from '../../../assets/pictures/logo.png';
 
@@ -65,15 +66,24 @@ const StyledList = styled.li`
 
 const StyledLogo = styled.div`
   width: 300px;
-  height: 80px;
+  height: 100%;
   background-image: url(${Logo});
   background-size: contain;
   background-repeat: no-repeat;
+  background-position: center;
   @media (max-width: 1000px) {
     width: 100%;
+    background-size: 300px;
+    margin: 0 auto;
     margin-bottom: 20px;
     text-align: center;
     background-position: 50%;
+  }
+`;
+const StyledLink = styled(Link)`
+  text-decoration: none;
+  &:hover {
+    text-decoration: underline;
   }
 `;
 const Newsletter = () => (
@@ -82,32 +92,64 @@ const Newsletter = () => (
       <StyledInfoColumn>
         <StyledText>Warunki zakupów</StyledText>
         <StyledUnorderedList>
-          <StyledList>Czas i koszt dostawy</StyledList>
-          <StyledList>Wysyłka za granicę</StyledList>
-          <StyledList>Reklamacje i zwroty</StyledList>
-          <StyledList>Polityka prywatności</StyledList>
-          <StyledList>Klauzule informacyjne RODO</StyledList>
-          <StyledList>Regulamin</StyledList>
+          <StyledList>
+            <StyledLink>Czas i koszt dostawy</StyledLink>
+          </StyledList>
+          <StyledList>
+            <StyledLink>Wysyłka za granicę</StyledLink>
+          </StyledList>
+          <StyledList>
+            <StyledLink>Reklamacje i zwroty</StyledLink>
+          </StyledList>
+          <StyledList>
+            <StyledLink>Polityka prywatności</StyledLink>
+          </StyledList>
+          <StyledList>
+            <StyledLink>Klauzule informacyjne RODO</StyledLink>
+          </StyledList>
+          <StyledList>
+            <StyledLink>Regulamin</StyledLink>
+          </StyledList>
         </StyledUnorderedList>
       </StyledInfoColumn>
       <StyledInfoColumn>
         <StyledText>Informacje</StyledText>
         <StyledUnorderedList>
-          <StyledList>O firmie | Praca</StyledList>
-          <StyledList>Warto nam zaufać!</StyledList>
-          <StyledList>FAQ | TAX FREE</StyledList>
-          <StyledList>Rabaty dla krwiodawców</StyledList>
-          <StyledList>Kody rabatowe i promocje</StyledList>
+          <StyledList>
+            <StyledLink>O firmie</StyledLink> | <StyledLink>Praca</StyledLink>
+          </StyledList>
+          <StyledList>
+            <StyledLink>Warto nam zaufać!</StyledLink>
+          </StyledList>
+          <StyledList>
+            <StyledLink>FAQ</StyledLink> | <StyledLink>TAX FREE</StyledLink>
+          </StyledList>
+          <StyledList>
+            <StyledLink>Rabaty dla krwiodawców</StyledLink>
+          </StyledList>
+          <StyledList>
+            <StyledLink>Kody rabatowe i promocje</StyledLink>
+          </StyledList>
         </StyledUnorderedList>
       </StyledInfoColumn>
       <StyledInfoColumn>
         <StyledText>Pomoc</StyledText>
         <StyledUnorderedList>
-          <StyledList>Wersja mobilna</StyledList>
-          <StyledList>Kontakt</StyledList>
-          <StyledList>Odbiór osobisty - Warszawa</StyledList>
-          <StyledList>Pliki elektroniczne</StyledList>
-          <StyledList>Masz pocztę w gmailu?</StyledList>
+          <StyledList>
+            <StyledLink>Wersja mobilna</StyledLink>
+          </StyledList>
+          <StyledList>
+            <StyledLink>Kontakt</StyledLink>
+          </StyledList>
+          <StyledList>
+            <StyledLink>Odbiór osobisty - Warszawa</StyledLink>
+          </StyledList>
+          <StyledList>
+            <StyledLink>Pliki elektroniczne</StyledLink>
+          </StyledList>
+          <StyledList>
+            <StyledLink>Masz pocztę w gmailu?</StyledLink>
+          </StyledList>
         </StyledUnorderedList>
       </StyledInfoColumn>
       <StyledLogo />

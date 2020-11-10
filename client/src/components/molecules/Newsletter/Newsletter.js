@@ -53,6 +53,9 @@ const StyledTextWrapper = styled.div`
 const StyledForm = styled.div`
   display: flex;
   justify-content: flex-end;
+  @media (max-width: 620px) {
+    justify-content: center;
+  }
   @media (max-width: 400px) {
     flex-wrap: wrap;
   }
@@ -65,6 +68,7 @@ const StyledInput = styled(Input)`
   color: #253b57;
   padding: 0 20px;
   margin-bottom: 10px;
+  font-weight: 400;
 `;
 const StyledButton = styled(Button)`
   width: 100px;
@@ -80,6 +84,9 @@ const StyledHeading = styled(Heading)`
   margin-bottom: 20px;
   font-size: 36px;
   text-align: right;
+  @media (max-width: 620px) {
+    text-align: center;
+  }
   @media (max-width: 450px) {
     font-size: 26px;
   }
@@ -90,6 +97,9 @@ const StyledText = styled(Text)`
   opacity: 0.8;
   font-weight: regular;
   text-align: right;
+  @media (max-width: 620px) {
+    text-align: center;
+  }
 `;
 
 const Newsletter = () => (

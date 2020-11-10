@@ -1,6 +1,8 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 import styled from 'styled-components';
+import useEventListener from '@use-it/event-listener';
 import Heading from '../../atoms/Heading/Heading';
 import Button from '../../atoms/Button/Button';
 import Book from '../../atoms/Book/Book';
@@ -11,6 +13,7 @@ const StyledHeaderSection = styled.div`
   justify-content: space-between;
   align-items: center;
   margin: 50px 0;
+  padding: 0 20px;
   @media (max-width: 800px) {
     margin-top: 120px;
   }
@@ -19,6 +22,11 @@ const StyledHeaderSection = styled.div`
   }
 `;
 
+const StyledHeading = styled(Heading)`
+  @media (max-width: 320px) {
+    font-size: 24px;
+  }
+`;
 const StyledButton = styled(Button)`
   position: relative;
   width: 120px;
@@ -125,25 +133,57 @@ const StyledCompleteBlock = styled.div`
   }
 `;
 
+const StyledLink = styled(Link)`
+  text-decoration: none;
+  color: inherit;
+`;
+
 const BooksGrid = ({ title }) => {
   const [categoryModal, setCategoryModal] = useState(false);
+  const categoriesButton = useRef(null);
+  const categories = useRef(null);
+
+  const clickHandler = (e) => {
+    if (
+      categoriesButton.current &&
+      !categoriesButton.current.contains(e.target) &&
+      !categories.current.contains(e.target)
+    ) {
+      setCategoryModal(false);
+    }
+  };
+  useEventListener('mousedown', clickHandler);
   return (
     <>
       <StyledHeaderSection>
-        <Heading>{title}</Heading>
+        <StyledHeading>{title}</StyledHeading>
         <StyledCategoryWrapper>
           <StyledButton
+            ref={categoriesButton}
             onClick={() => setCategoryModal(!categoryModal)}
             className={categoryModal && 'active'}
           >
             kategorie <i className="fas fa-angle-down" />
           </StyledButton>
-          <StyledCompleteBlock className={categoryModal && 'active'}>
-            <p>Kryminały</p>
-            <p>Fantastyka</p>
-            <p>Reportaż</p>
-            <p>Dla dzieci</p>
-            <p>Kulinaria</p>
+          <StyledCompleteBlock ref={categories} className={categoryModal && 'active'}>
+            <StyledLink>
+              <p>Bestsellery</p>
+            </StyledLink>
+            <StyledLink>
+              <p>Kryminały</p>
+            </StyledLink>
+            <StyledLink>
+              <p>Fantastyka</p>
+            </StyledLink>
+            <StyledLink>
+              <p>Reportaż</p>
+            </StyledLink>
+            <StyledLink>
+              <p>Dla dzieci</p>
+            </StyledLink>
+            <StyledLink>
+              <p>Kulinaria</p>
+            </StyledLink>
           </StyledCompleteBlock>
         </StyledCategoryWrapper>
       </StyledHeaderSection>

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import styled, { css } from 'styled-components';
-import 'react-responsive-carousel/lib/styles/carousel.min.css'; // requires a loader
+import { Link } from 'react-router-dom';
+import 'react-responsive-carousel/lib/styles/carousel.min.css';
 import { Carousel } from 'react-responsive-carousel';
 import ArrowLeft from '../../../assets/icons/arrow_left.svg';
 import ArrowRight from '../../../assets/icons/arrow_right.svg';
@@ -89,6 +90,11 @@ const StyledCarousel = styled(Carousel)`
   }
 `;
 
+const StyledLink = styled(Link)`
+  text-decoration: none;
+  color: inherit;
+`;
+
 class BestsellersSlider extends Component {
   constructor(props) {
     super(props);
@@ -114,7 +120,9 @@ class BestsellersSlider extends Component {
         <StyledWrapper>
           <StyledTextWrapper>
             <StyledHeading>Bestsellery</StyledHeading>
-            <StyledText>zobacz więcej</StyledText>
+            <StyledText>
+              <StyledLink>zobacz więcej</StyledLink>
+            </StyledText>
           </StyledTextWrapper>
         </StyledWrapper>
 

@@ -47,7 +47,7 @@ const StyledTextWrapper = styled.div`
     width: 100%;
     justify-content: center;
   }
-  z-index: 9999;
+  z-index: 5555;
 `;
 
 const StyledForm = styled.div`

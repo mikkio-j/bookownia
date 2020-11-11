@@ -21,13 +21,16 @@ const StyledHeaderText = styled.h1`
   font-size: ${({ theme: { fontSize } }) => fontSize.xl};
 
   @media ${({ theme }) => theme.device.tablet} {
-    font-size: 20px;
+    display: none;
   }
 `;
 
 const StyledImage = styled.img`
   width: 30%;
   object-fit: contain;
+  @media (max-width: 768px) {
+    width: 50%;
+  }
 `;
 
 const StyledLink = styled(Link)`

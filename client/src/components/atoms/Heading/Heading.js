@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-const StyledHeading = styled.h1`
+const StyledHeading = styled.p`
   margin: 0;
   font-family: 'Ubuntu';
   font-size: 48px;

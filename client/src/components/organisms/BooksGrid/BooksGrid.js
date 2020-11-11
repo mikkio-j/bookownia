@@ -6,6 +6,7 @@ import useEventListener from '@use-it/event-listener';
 import Heading from '../../atoms/Heading/Heading';
 import Button from '../../atoms/Button/Button';
 import Book from '../../atoms/Book/Book';
+import Input from '../../atoms/Input/Input';
 import BookCover from '../../../assets/pictures/book.png';
 
 const StyledHeaderSection = styled.div`
@@ -20,11 +21,17 @@ const StyledHeaderSection = styled.div`
   @media (max-width: 760px) {
     margin-top: 120px;
   }
+  @media (max-width: 600px) {
+    flex-direction: column;
+  }
 `;
 
 const StyledHeading = styled(Heading)`
   @media (max-width: 320px) {
     font-size: 24px;
+  }
+  @media (max-width: 600px) {
+    margin-bottom: 20px;
   }
 `;
 const StyledButton = styled(Button)`
@@ -42,6 +49,9 @@ const StyledButton = styled(Button)`
   }
   i {
     margin-left: 5px;
+  }
+  @media (max-width: 600px) {
+    width: 100%;
   }
 `;
 
@@ -92,6 +102,9 @@ const StyledPagination = styled.ul`
 
 const StyledCategoryWrapper = styled.div`
   position: relative;
+  @media (max-width: 600px) {
+    width: 90%;
+  }
 `;
 
 const StyledCompleteBlock = styled.div`
@@ -138,6 +151,14 @@ const StyledLink = styled(Link)`
   color: inherit;
 `;
 
+const StyledInput = styled(Input)`
+  width: 50%;
+  height: 40px;
+  @media (max-width: 600px) {
+    width: 90%;
+    margin-bottom: 20px;
+  }
+`;
 const BooksGrid = ({ title }) => {
   const [categoryModal, setCategoryModal] = useState(false);
   const categoriesButton = useRef(null);
@@ -157,6 +178,7 @@ const BooksGrid = ({ title }) => {
     <>
       <StyledHeaderSection>
         <StyledHeading>{title}</StyledHeading>
+        <StyledInput search placeholder="Szukaj książek..." />
         <StyledCategoryWrapper>
           <StyledButton
             ref={categoriesButton}

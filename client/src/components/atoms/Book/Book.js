@@ -10,10 +10,9 @@ const StyledWrapper = styled.div`
   font-family: 'Ubuntu', sans-serif;
   margin-bottom: 50px;
   transition: 0.3s;
-  cursor: pointer;
-  &:hover .overlay {
+  /* &:hover .overlay {
     opacity: 0.4;
-  }
+  } */
   div {
     text-align: center;
   }

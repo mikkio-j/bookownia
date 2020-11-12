@@ -6,6 +6,7 @@ import Theme from '../theme/Theme';
 import HomeView from './Home';
 import BooksView from './Books';
 import BookView from './Book';
+import CartView from './Cart/Cart';
 import DashboardStatisticsView from './Dashboard/DashboardStatisticsView';
 import DashboardCustomersView from './Dashboard/DashboardCustomersView';
 import DashboardOrdersView from './Dashboard/DashboardOrdersView';
@@ -23,6 +24,7 @@ const Root = () => (
           <Route exact path="/schoolbooks" component={HomeView} />
           <Route exact path="/my-account" component={HomeView} />
           <Route exact path="/book/:id" component={BookView} />
+          <Route path="/cart" component={CartView} />
           <Route exact path="/dashboard" render={() => <Redirect to="/dashboard/statistics" />} />
           <Route exact path="/dashboard/statistics" component={DashboardStatisticsView} />
           <Route exact path="/dashboard/customers" component={DashboardCustomersView} />

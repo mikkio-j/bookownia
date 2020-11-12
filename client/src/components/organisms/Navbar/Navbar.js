@@ -110,6 +110,9 @@ const StyledListItem = styled.li`
   &.active {
     border-bottom: 3px solid ${({ theme }) => theme.colors.primary};
   }
+  .account {
+    color: ${({ theme }) => theme.colors.primary};
+  }
 `;
 
 const StyledNavLink = styled(NavLink)`
@@ -148,7 +151,9 @@ const Navbar = ({ location: { pathname } }) => {
               <StyledNavLink to="/schoolbooks">Podręczniki</StyledNavLink>
             </StyledListItem>
             <StyledListItem className={pathname.includes('/my-account') && 'active'}>
-              <StyledNavLink to="/my-account">Moje konto</StyledNavLink>
+              <StyledNavLink to="/my-account" className="account">
+                Zaloguj się
+              </StyledNavLink>
             </StyledListItem>
           </StyledUnorderedList>
           <Link to="/cart">

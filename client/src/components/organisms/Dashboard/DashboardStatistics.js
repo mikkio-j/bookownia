@@ -84,7 +84,7 @@ const StyledBuyMost = styled.div`
   flex-direction: column;
   padding: 0 10px;
   margin-left: 60px;
-  h1 {
+  p {
     color: white;
     font-size: 22px;
     margin-bottom: 20px;
@@ -119,7 +119,7 @@ const StyledChartWrapper = styled.div`
   position: relative;
   margin-top: 50px;
   margin-left: 50px;
-  h1 {
+  p {
     position: absolute;
     color: white;
     font-size: 18px;

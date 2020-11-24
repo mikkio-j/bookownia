@@ -14,6 +14,9 @@ const StyledWrapper = styled.div`
 
 const StyledInnerWrapper = styled.div`
   display: flex;
+  @media (max-width: 820px) {
+    flex-direction: column;
+  }
 `;
 
 const StyledInnerLeftWrapper = styled.div`
@@ -24,8 +27,18 @@ const StyledInnerLeftWrapper = styled.div`
 const StyledInnerRightWrapper = styled.div`
   display: flex;
   flex-direction: column;
-  border-left: 2px solid rgba(37, 59, 87, 0.1);
+  border-left: 2px solid rgba(37, 59, 87, 0.06);
   margin-left: 20px;
+  @media (max-width: 820px) {
+    border-left: none;
+    border-top: 2px solid rgba(37, 59, 87, 0.06);
+    margin-left: 0;
+    flex-direction: row;
+    justify-content: space-around;
+  }
+  @media (max-width: 865px) {
+    margin-top: 30px;
+  }
 `;
 
 const StyledHeading = styled(Heading)`
@@ -40,13 +53,19 @@ const StyledInputWrapper = styled(Heading)`
 
 const StyledText = styled(Text)`
   font-weight: 400;
-  font-size: 18px;
+  font-size: 14px;
   margin-right: 20px;
   width: 50px;
+  height: 21px;
+  display: flex;
+  text-align: center;
   &.forgot--password {
     margin-right: 0;
     margin-left: 20px;
     width: auto;
+    @media (max-width: 415px) {
+      font-size: 12px;
+    }
     &:hover {
       cursor: pointer;
       text-decoration: underline;
@@ -80,9 +99,18 @@ const StyledFacebookButton = styled.div`
   font-weight: bold;
   font-size: 14px;
   color: white;
+  text-align: center;
   &:hover {
     opacity: 0.9;
     cursor: pointer;
+  }
+  @media (max-width: 865px) {
+    width: 250px;
+  }
+  @media (max-width: 415px) {
+    height: 55px;
+    width: 45%;
+    margin: 10px 0;
   }
 `;
 
@@ -93,16 +121,25 @@ const StyledGoogleButton = styled.div`
   margin: 10px 0 0 20px;
   width: 295px;
   height: 45px;
-  filter: drop-shadow(0px 1px 4px rgba(0, 0, 0, 0.25));
+  filter: drop-shadow(0px 1px 4px rgba(0, 0, 0, 0.15));
   background: #ffffff;
   border-radius: 12px;
   font-family: Roboto;
   font-weight: bold;
   font-size: 14px;
   color: #253b57;
+  text-align: center;
   &:hover {
     opacity: 0.9;
     cursor: pointer;
+  }
+  @media (max-width: 865px) {
+    width: 250px;
+  }
+  @media (max-width: 415px) {
+    height: 55px;
+    width: 45%;
+    margin: 10px 0;
   }
 `;
 
@@ -112,13 +149,13 @@ const LoginForm = () => (
     <StyledInnerWrapper>
       <StyledInnerLeftWrapper>
         <StyledInputWrapper>
-          <StyledText>e-mail</StyledText>
-          <Input />
+          {/* <StyledText>e-mail</StyledText> */}
+          <Input placeholder="E-mail" />
           <StyledButton>zaloguj się</StyledButton>
         </StyledInputWrapper>
         <StyledInputWrapper>
-          <StyledText>hasło</StyledText>
-          <Input type="password" />
+          {/* <StyledText>hasło</StyledText> */}
+          <Input type="password" placeholder="Password" />
           <StyledText className="forgot--password">Nie pamiętasz hasła?</StyledText>
         </StyledInputWrapper>
       </StyledInnerLeftWrapper>
